@@ -18,19 +18,25 @@
 
 ## Installation des logiciels
 
-   * Python [https://www.python.org/downloads/] 
+[Python] [https://www.python.org/downloads/] 
   
-     * Windows
-       * Télécharger le fichier: [https://www.python.org/ftp/python/pymanager/python-manager-25.2.msix]
-       * Lancer le fichier python-manager-25.2.msix et suivi les pas demandant 
-     * Linux
-         Lance l'instruction suivant: `sudo apt install python3`
+  * Windows
+    
+    * Télécharger le fichier: [https://www.python.org/ftp/python/pymanager/python-manager-25.2.msix]
+    * Lancer le fichier python-manager-25.2.msix et suivi les pas demandant 
+ * Linux
+     Lance l'instruction suivant:
+      ```sh
+      sudo apt install python3
+      ```
 
-   * Poetry: 
+Poetry: 
   
-     * Installation avec Linux, Windows (WSL) 
-      Lancer l'instruction: 
-         `curl -sSL https://install.python-poetry.org | python3 -`
+   * Installation avec Linux, Windows (WSL) 
+     Lancer l'instruction: 
+     ```sh
+        curl -sSL https://install.python-poetry.org | python3 -
+     ```
 
 ## mise à jours poetry
 
@@ -53,24 +59,30 @@
 
    Le lancement du script de conversion, on va utiliser la commande suivant:
       
+   ```python
       poetry run python [nom du fichier python principal]
+   ```
    
-      Exemple de lancement:
+   Exemple de lancement:
       
+   ```python 
       poetry run python AD31Convert.py
-      
+   ```      
 
    Résultat:
-      Les fichiers de conversion seront stockés dans le dossier parametre dans le fichier config.yaml.
+   Les fichiers de conversion seront stockés dans le dossier parametre dans le fichier config.yaml.
 
-      ```yaml
-         output:
-            lieux: "output/lieux"
-            notices: "output/notices"
-      ```
+   ```yaml
+      output:
+        lieux: "output/lieux"
+        notices: "output/notices"
+   ```
+   
+   > [!NOTE]
    > La conversion genere 2 dossier
       - Un dossier `lieux` du résultat de la conversion de Lieux (un fichier en format turtle)
       - Un dossier `notices` le contenu est une liste de notices en format turtle.
+   
 
 
 [catalog]
@@ -78,8 +90,8 @@
     **Personnes Morales** : Générer le catalog de tous les personnes morales
     **Juridictions** : Générer le catalog des Juridictions
 
-
-# Generer un fichier json à partir d'un fichier de vocabulaires Excel.
+---
+### Generer un fichier json à partir d'un fichier de vocabulaires Excel.
 
 Le processus est developper de façon manunuelle, on va utiliser les colonnes `Concept URI`, `skos:notation`, `skos:prefLabel` de chaque fichier de vocabulaire.
 
