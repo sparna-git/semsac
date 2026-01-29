@@ -63,14 +63,14 @@
    Résultat:
       Les fichiers de conversion seront stockés dans le dossier parametre dans le fichier config.yaml.
 
-      `yml
+      ```yaml
          output:
             lieux: "output/lieux"
             notices: "output/notices"
-      `
-      > La conversion genere 2 dossier
-         - Un dossier `lieux` du résultat de la conversion de Lieux (un fichier en format turtle)
-         - Un dossier `notices` le contenu est une liste de notices en format turtle.
+      ```
+   > La conversion genere 2 dossier
+      - Un dossier `lieux` du résultat de la conversion de Lieux (un fichier en format turtle)
+      - Un dossier `notices` le contenu est une liste de notices en format turtle.
 
 
 [catalog]
