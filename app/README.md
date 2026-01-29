@@ -8,7 +8,7 @@
    3. Dossier `vocabulaires`: Dossier contenant les fichiers JSON des vocabulaires.
 2. Dossier `src`: Dossier contenant les scripts python
 3. Fichier de configuration `config.yml` : Contient la liste de tous les fichiers sources à utiliser pour la conversion de données et le dossier où seront stockés les fichiers convertis. Voir le fichier config.yml 
-4. Fichier `AD31Convert.py` : Fichier debut de la conversion de données.
+4. Fichier `AD31Conversion.py` : Fichier debut de la conversion de données.
 
 
 ## Prérequis logiciels
@@ -43,19 +43,23 @@
 ## Avant de lancer la conversion
 
 
-- Mettre à jour les fichiers JSON de vocabulaires dans le dossier `vocabulaires` (ce process n'est pas automatique) [Voir: Generer un fichier json à partir d'un fichier de vocabulaires Excel.]
+- Mettre à jour les fichiers JSON de vocabulaires dans le dossier `vocabulaires` (ce process n'est pas automatique) !!!Note: voir Generer un fichier json à partir d'un fichier de vocabulaires Excel.]
 - Mettre à jour le fichier de notices dans `data`. Conserver le même nom de fichier.
 - Mettre à jour les fichiers annexes dans `data/catalogues`. Conserver les mêmes noms de fichier
+
+---
 
 ## Lancement de la conversion
 
    Le lancement du script de conversion, on va utiliser la commande suivant:
-      `poetry run python [nom du fichier python principal]`
-   Exemple de lancement:
       
-      ```py
+      `poetry run python [nom du fichier python principal]`
+   
+      Exemple de lancement:
+      
+      `
          poetry run python AD31Convert.py
-      ```
+      `
 
    Résultat:
       Les fichiers de conversion seront stockés dans le dossier parametre dans le fichier config.yaml.
