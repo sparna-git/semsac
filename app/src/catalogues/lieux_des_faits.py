@@ -22,23 +22,15 @@ class convert_lieux:
         # Vocabulaire Type de Lieux
         self.__type_of_lieux = datamarts.get_voc_Lieux()
 
-        # DataFrames Lieux
-        __dflieux_juridiction = datamarts.get_catalogue_liuex_juridiction()
-        
-        __dflieux_juridiction.drop(["provenance"], axis=1,inplace=True)
-        __dflieux_juridiction["latitude"] = ""
-        __dflieux_juridiction["longitude"] = ""
-        
         __dflieux_geo_code_input = datamarts.get_catalogue_liuex_GeoCode() # Lieux Geo Code
         
-        # Chercher les lieux qui n'existe pas dans le fichier de geo code
-        __dfJur = __dflieux_juridiction[~__dflieux_juridiction["vedette"].isin(__dflieux_geo_code_input["vedette"].to_list())]
-        # Ajouter les lieux qui ne sont pas dans le geo code
-        __dflieux_geo_code = pd.concat([__dflieux_geo_code_input,__dfJur])
         
+        # Ajouter les lieux qui ne sont pas dans le geo code
+        __dflieux_geo_code = __dflieux_geo_code_input
         __dflieux_geo_code.drop_duplicates(inplace=True) 
+        
         __dflieux_geo_code["id"] = __dflieux_geo_code.apply(lambda _: generate_id(),axis=1) 
-
+        
         # Lieux Dataset
         __dflieux_geo_code["departement"] = __dflieux_geo_code["departement"].str.strip()
         __dflieux_geo_code["commune"] = __dflieux_geo_code["commune"].str.strip()
@@ -120,7 +112,7 @@ class convert_lieux:
         [json_lieux_full.append(j) for j in self.__dfLieux["json"].to_list() ]
 
         json_output = convert_json_context(json_lieux_full)
-        #write_json_file(f"{self.__get_directory_lieux}/lieux_result.json",json_output)
+        write_json_file(f"{self.__get_directory_lieux}/lieux_result.json",json_output)
         convert_to_turtle(f"{self.__get_directory_lieux}/lieux_result.ttl",json_output)
         
         # Concat all lieux des faits        

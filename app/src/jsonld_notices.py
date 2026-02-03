@@ -299,7 +299,7 @@ class convert:
         # Generate JSON 
         json_output_string = convert_json_context(json_code)
         # Ecrir un fichier JSON
-        #write_json_file(f"{self.__get_directory_notices}/semsac_{name_file}.json",json_output_string)
+        write_json_file(f"{self.__get_directory_notices}/semsac_{name_file}.json",json_output_string)
         # Ecrir un fichier graph
         convert_to_turtle(f"{self.__get_directory_notices}/semsac_{name_file}.ttl",json_output_string)
         
