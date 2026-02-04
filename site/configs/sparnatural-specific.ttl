@@ -32,10 +32,8 @@
 
 sacs:Identifiant sh:deactivated "true"^^xsd:boolean.
 sacs:Date sh:deactivated "true"^^xsd:boolean .
-
 sacs:Instruction sh:deactivated "true"^^xsd:boolean .
 sacs:Fait sh:deactivated "true"^^xsd:boolean . 
-
 sacs:LegalStatus sh:deactivated "true"^^xsd:boolean .
 sacs:IdentifierType sh:deactivated "true"^^xsd:boolean .
 sacs:PlaceType sh:deactivated "true"^^xsd:boolean .
@@ -46,6 +44,7 @@ sacs:CarrierType sh:deactivated "true"^^xsd:boolean .
 sacs:DemographicGroup sh:deactivated "true"^^xsd:boolean .
 sacs:CorporateBodyType sh:deactivated "true"^^xsd:boolean .
 sacs:TypeProcedure sh:deactivated "true"^^xsd:boolean .
+sacs:OrdreInstruction sh:deactivated "true"^^xsd:boolean .
 
 
 # Lien inverse

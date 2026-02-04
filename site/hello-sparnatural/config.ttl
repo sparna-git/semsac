@@ -1,1994 +1,1079 @@
-@prefix eclap: <http://www.eclap.eu/schema/eclap/> .
 @prefix schema: <http://schema.org/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix volipi: <http://data.sparna.fr/ontologies/volipi#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix skosthes: <http://purl.org/iso25964/skos-thes#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sacs: <https://data.archives.haute-garonne.fr/modeles/sacsaproces#> .
 @prefix type: <https://data.archives.haute-garonne.fr/type/> .
-@prefix wd: <http://www.wikidata.org/entity/> .
 @prefix qb: <http://purl.org/linked-data/cube#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix aat: <http://vocab.getty.edu/aat/> .
 @prefix doap: <http://usefulinc.com/ns/doap#> .
 @prefix rico: <https://www.ica.org/standards/RiC/ontology#> .
-@prefix rdapm: <http://rdaregistry.info/termList/RDAproductionMethod/> .
-@prefix gnd: <http://d-nb.info/gnd/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix euvoc: <http://publications.europa.eu/ontology/euvoc#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix iso639-2: <http://id.loc.gov/vocabulary/iso639-2/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
 @prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix xls2rdf: <https://xls2rdf.sparna.fr/vocabulary#> .
-@prefix rdamat: <http://rdaregistry.info/termList/RDAMaterial/> .
-@prefix rdaa: <http://rdaregistry.info/Elements/a/> .
 @prefix vocabulaire: <https://data.archives.haute-garonne.fr/vocabulaire/> .
-@prefix rdavf: <http://rdaregistry.info/termList/videoFormat/> .
 @prefix ad31-onto: <https://data.archives.haute-garonne.fr/ontologie#> .
-@prefix rdag: <http://rdaregistry.info/termList/gender/> .
-@prefix ric-rst: <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#> .
 @prefix core: <http://data.sparna.fr/ontologies/sparnatural-config-core#> .
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#> .
 @prefix shacl-play: <https://shacl-play.sparna.fr/ontology#> .
 @prefix datasources: <http://data.sparna.fr/ontologies/sparnatural-config-datasources#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdabs: <http://rdaregistry.info/termList/broadcastStand/> .
 @prefix dash: <http://datashapes.org/dash#> .
 @prefix frbroo: <http://iflastandards.info/ns/fr/frbr/frbroo/> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
 
-vocabulaire:pc a skos:ConceptScheme;
-  skos:notation "pc";
-  dct:coverage rico:Activity;
-  dct:isRequiredBy rico:hasActivityType;
-  skos:prefLabel "Nature de la procédure"@fr;
-  skos:hasTopConcept type:pcciv, type:pccri .
-
-type:pcciv a ad31-onto:TypeProcedure, skos:Concept;
-  skos:notation "pcciv";
-  skos:prefLabel "procédure civile"@fr;
-  rico:name "procédure civile"@fr;
-  skos:inScheme vocabulaire:pc;
-  skos:topConceptOf vocabulaire:pc .
-
-type:pccri a ad31-onto:TypeProcedure, skos:Concept;
-  skos:notation "pccri";
-  skos:prefLabel "procédure criminelle"@fr;
-  rico:name "procédure criminelle"@fr;
-  skos:inScheme vocabulaire:pc;
-  skos:topConceptOf vocabulaire:pc .
-
-vocabulaire:sx a skos:ConceptScheme;
-  skos:notation "sx";
-  dct:coverage rico:Person;
-  dct:isRequiredBy rico:hasOrHadDemographicGroup;
-  skos:prefLabel "Sexe des personnes"@fr;
-  skos:hasTopConcept type:sxhom, type:sxfem, type:sxind .
-
-type:sxhom a rico:DemographicGroup, skos:Concept;
-  skos:notation "sxhom";
-  skos:prefLabel "Homme"@fr;
-  rico:name "Homme"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q8441>;
-  skos:inScheme vocabulaire:sx;
-  skos:topConceptOf vocabulaire:sx .
-
-type:sxfem a rico:DemographicGroup, skos:Concept;
-  skos:notation "sxfem";
-  skos:prefLabel "Femme"@fr;
-  rico:name "Femme"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q467>;
-  skos:inScheme vocabulaire:sx;
-  skos:topConceptOf vocabulaire:sx .
-
-type:sxind a rico:DemographicGroup, skos:Concept;
-  skos:notation "sxind";
-  skos:prefLabel "Indéterminé"@fr;
-  rico:name "Indéterminé"@fr;
-  skos:inScheme vocabulaire:sx;
-  skos:topConceptOf vocabulaire:sx .
-
-vocabulaire:cl a skos:ConceptScheme;
-  skos:notation "cl";
-  dct:coverage rico:CorporateBody;
-  dct:isRequiredBy rico:hasOrHadCorporateBodyType;
-  dct:title "Types de personnes morales";
-  dct:description "Thésaurus des types de lieux (entités géo-historiques). Saisi manuellement en se fondant sur les catégories de lieux sous-jacentes ou implicites dans les référentiels de lieux de la base de données des sacs à procès des Archives départementales de la Haute-Garonne. Des enrichissements, modifications de structure et alignements sont prévus dans les prochains mois. Nombre de concepts : 20.";
-  skos:prefLabel "Type de collectivité"@fr;
-  skos:hasTopConcept type:cljur, type:clabb, type:clbur, type:clcca, type:clcco, type:clcol,
-    type:clcom, type:clhab, type:clcon, type:clfab, type:clpre, type:clcor, type:cldio,
-    type:cldic, type:clhop, type:clpar, type:clsei, type:clsoc, type:clsyn, type:cluni .
-
-type:cljur a rico:CorporateBodyType, skos:Concept;
-  skos:notation "cljur";
-  skos:prefLabel "juridiction"@fr;
-  rico:name "juridiction"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/corporateBodyType/FRAN_RI_104-d5bloo2lv1--65p8cc56ah9l>;
-  skos:inScheme vocabulaire:cl;
-  skos:topConceptOf vocabulaire:cl .
-
-type:clabb a rico:CorporateBodyType, skos:Concept;
-  skos:notation "clabb";
-  skos:prefLabel "abbaye, couvent, prieuré"@fr;
-  rico:name "abbaye, couvent, prieuré"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/corporateBodyType/FRAN_RI_104-d-ad24j6poo--1aa5oyqbqi4jn>;
-  skos:inScheme vocabulaire:cl;
-  skos:topConceptOf vocabulaire:cl .
-
-type:clbur a rico:CorporateBodyType, skos:Concept;
-  skos:notation "clbur";
-  skos:prefLabel "bureau des finances"@fr;
-  rico:name "bureau des finances"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/corporateBodyType/FRAN_RI_104-d-accmz51qn--m68dghr4db08>;
-  skos:inScheme vocabulaire:cl;
-  skos:topConceptOf vocabulaire:cl .
-
-type:clcca a rico:CorporateBodyType, skos:Concept;
-  skos:notation "clcca";
-  skos:prefLabel "chapitre cathédral"@fr;
-  rico:name "chapitre cathédral"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/corporateBodyType/FRAN_RI_104-d-acqahmcoo--zyzdyoegxv67>;
-  skos:inScheme vocabulaire:cl;
-  skos:topConceptOf vocabulaire:cl .
-
-type:clcco a rico:CorporateBodyType, skos:Concept;
-  skos:notation "clcco";
-  skos:prefLabel "chapitre collégial"@fr;
-  rico:name "chapitre collégial"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/corporateBodyType/FRAN_RI_104-d-acqahmcoo--zyzdyoegxv67>;
-  skos:inScheme vocabulaire:cl;
-  skos:topConceptOf vocabulaire:cl .
-
-type:clcol a rico:CorporateBodyType, skos:Concept;
-  skos:notation "clcol";
-  skos:prefLabel "collège (avant 1790)"@fr;
-  rico:name "collège (avant 1790)"@fr;
-  skos:inScheme vocabulaire:cl;
-  skos:topConceptOf vocabulaire:cl .
-
-type:clcom a rico:CorporateBodyType, skos:Concept;
-  skos:notation "clcom";
-  skos:prefLabel "commanderie"@fr;
-  rico:name "commanderie"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/corporateBodyType/FRAN_RI_104-d-ad24j6poo--1aa5oyqbqi4jn>;
-  skos:inScheme vocabulaire:cl;
-  skos:topConceptOf vocabulaire:cl .
-
-type:clhab a rico:CorporateBodyType, skos:Concept;
-  skos:notation "clhab";
-  skos:prefLabel "communauté d'habitants"@fr;
-  rico:name "communauté d'habitants"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/corporateBodyType/FRAN_RI_104-d-afvdshcyl--1j2tyrrthai8t>;
-  skos:inScheme vocabulaire:cl;
-  skos:topConceptOf vocabulaire:cl .
-
-type:clcon a rico:CorporateBodyType, skos:Concept;
-  skos:notation "clcon";
-  skos:prefLabel "confrérie"@fr;
-  rico:name "confrérie"@fr;
-  skos:inScheme vocabulaire:cl;
-  skos:topConceptOf vocabulaire:cl .
-
-type:clfab a rico:CorporateBodyType, skos:Concept;
-  skos:notation "clfab";
-  skos:prefLabel "conseil de fabrique"@fr;
-  rico:name "conseil de fabrique"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/corporateBodyType/FRAN_RI_104-d-aec4bbo0n--pbh0kun35aq6>;
-  skos:inScheme vocabulaire:cl;
-  skos:topConceptOf vocabulaire:cl .
-
-type:clpre a rico:CorporateBodyType, skos:Concept;
-  skos:notation "clpre";
-  skos:prefLabel "consorce de prêtres"@fr;
-  rico:name "consorce de prêtres"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/corporateBodyType/FRAN_RI_104-d-aec4bbo0n--pbh0kun35aq6>;
-  skos:inScheme vocabulaire:cl;
-  skos:topConceptOf vocabulaire:cl .
-
-type:clcor a rico:CorporateBodyType, skos:Concept;
-  skos:notation "clcor";
-  skos:prefLabel "corporation"@fr;
-  rico:name "corporation"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/corporateBodyType/FRAN_RI_104-d-afj6suzmb--1aezp32qm7579>;
-  skos:inScheme vocabulaire:cl;
-  skos:topConceptOf vocabulaire:cl .
-
-type:cldio a rico:CorporateBodyType, skos:Concept;
-  skos:notation "cldio";
-  skos:prefLabel "diocèse"@fr;
-  rico:name "diocèse"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/corporateBodyType/FRAN_RI_104-d-acqahmcoo--zyzdyoegxv67>;
-  skos:inScheme vocabulaire:cl;
-  skos:topConceptOf vocabulaire:cl .
-
-type:cldic a rico:CorporateBodyType, skos:Concept;
-  skos:notation "cldic";
-  skos:prefLabel "diocèse civil"@fr;
-  rico:name "diocèse civil"@fr;
-  skos:inScheme vocabulaire:cl;
-  skos:topConceptOf vocabulaire:cl .
-
-type:clhop a rico:CorporateBodyType, skos:Concept;
-  skos:notation "clhop";
-  skos:prefLabel "hôpital"@fr;
-  rico:name "hôpital"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/corporateBodyType/FRAN_RI_104-d-ag32u6afy--108479wtqgzzn>;
-  skos:inScheme vocabulaire:cl;
-  skos:topConceptOf vocabulaire:cl .
-
-type:clpar a rico:CorporateBodyType, skos:Concept;
-  skos:notation "clpar";
-  skos:prefLabel "paroisse"@fr;
-  rico:name "paroisse"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/corporateBodyType/FRAN_RI_104-d-acqahmcoo--zyzdyoegxv67>;
-  skos:inScheme vocabulaire:cl;
-  skos:topConceptOf vocabulaire:cl .
-
-type:clsei a rico:CorporateBodyType, skos:Concept;
-  skos:notation "clsei";
-  skos:prefLabel "seigneurie"@fr;
-  rico:name "seigneurie"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/corporateBodyType/FRAN_RI_104-d-ae4onrcse--1ecw731ui6kom>;
-  skos:inScheme vocabulaire:cl;
-  skos:topConceptOf vocabulaire:cl .
-
-type:clsoc a rico:CorporateBodyType, skos:Concept;
-  skos:notation "clsoc";
-  skos:prefLabel "société commerciale"@fr;
-  rico:name "société commerciale"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/corporateBodyType/FRAN_RI_104-d5blonav6b-7jwfyyjh3efl>;
-  skos:inScheme vocabulaire:cl;
-  skos:topConceptOf vocabulaire:cl .
-
-type:clsyn a rico:CorporateBodyType, skos:Concept;
-  skos:notation "clsyn";
-  skos:prefLabel "syndic"@fr;
-  rico:name "syndic"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/corporateBodyType/FRAN_RI_104-d-aec4bbo0n--pbh0kun35aq6>;
-  skos:inScheme vocabulaire:cl;
-  skos:topConceptOf vocabulaire:cl .
-
-type:cluni a rico:CorporateBodyType, skos:Concept;
-  skos:notation "cluni";
-  skos:prefLabel "université"@fr;
-  rico:name "université"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/corporateBodyType/FRAN_RI_104-d-ad3kibdxz--tui6dsh7iiwm>;
-  skos:inScheme vocabulaire:cl;
-  skos:topConceptOf vocabulaire:cl .
-
-vocabulaire:oi a skos:ConceptScheme;
-  skos:notation "oi";
-  dct:coverage rico:Activity;
-  dct:isRequiredBy rico:hasActivityType;
-  skos:prefLabel "Ordre d'instruction"@fr;
-  skos:hasTopConcept type:oipre, type:oideu, type:oitro .
-
-type:oipre a ad31-onto:OrdreInstruction, skos:Concept;
-  skos:notation "oipre";
-  skos:prefLabel "première instruction"@fr;
-  rico:name "première instruction"@fr;
-  skos:inScheme vocabulaire:oi;
-  skos:topConceptOf vocabulaire:oi .
-
-type:oideu a ad31-onto:OrdreInstruction, skos:Concept;
-  skos:notation "oideu";
-  skos:prefLabel "deuxième instruction"@fr;
-  rico:name "deuxième instruction"@fr;
-  skos:inScheme vocabulaire:oi;
-  skos:topConceptOf vocabulaire:oi .
-
-type:oitro a ad31-onto:OrdreInstruction, skos:Concept;
-  skos:notation "oitro";
-  skos:prefLabel "troisième instruction"@fr;
-  rico:name "troisième instruction"@fr;
-  skos:inScheme vocabulaire:oi;
-  skos:topConceptOf vocabulaire:oi .
-
-vocabulaire:ju a skos:ConceptScheme;
-  skos:notation "ju";
-  dct:coverage rico:CorporateBody;
-  dct:isRequiredBy rico:hasOrHadLegalStatus;
-  dct:title "Types de juridictions";
-  dct:description "Thésaurus des types de lieux (entités géo-historiques). Saisi manuellement en se fondant sur les catégories de lieux sous-jacentes ou implicites dans les référentiels de lieux de la base de données des sacs à procès des Archives départementales de la Haute-Garonne. Des enrichissements, modifications de structure et alignements sont prévus dans les prochains mois. Nombre de concepts : 13.";
-  skos:prefLabel "Type de juridiction"@fr;
-  skos:hasTopConcept type:juami, type:jubai, type:jubou, type:jubur, type:jucou, type:jumun,
-    type:juroy, type:jusei, type:jueau, type:juoff, type:jupre, type:jusen, type:jutem,
-    type:junon, type:juaid .
-
-type:juami a rico:LegalStatus, skos:Concept;
-  skos:notation "juami";
-  skos:prefLabel "amirauté"@fr;
-  rico:name "amirauté"@fr;
-  skos:inScheme vocabulaire:ju;
-  skos:topConceptOf vocabulaire:ju .
-
-type:jubai a rico:LegalStatus, skos:Concept;
-  skos:notation "jubai";
-  skos:prefLabel "baillage"@fr;
-  rico:name "baillage"@fr;
-  skos:inScheme vocabulaire:ju;
-  skos:topConceptOf vocabulaire:ju .
-
-type:jubou a rico:LegalStatus, skos:Concept;
-  skos:notation "jubou";
-  skos:prefLabel "bourse des marchands"@fr;
-  rico:name "bourse des marchands"@fr;
-  skos:inScheme vocabulaire:ju;
-  skos:topConceptOf vocabulaire:ju .
-
-type:jubur a rico:LegalStatus, skos:Concept;
-  skos:notation "jubur";
-  skos:prefLabel "bureau des finances de la généralité"@fr;
-  rico:name "bureau des finances de la généralité"@fr;
-  skos:inScheme vocabulaire:ju;
-  skos:topConceptOf vocabulaire:ju .
-
-type:jucou a rico:LegalStatus, skos:Concept;
-  skos:notation "jucou";
-  skos:prefLabel "cour de Parlement"@fr;
-  rico:name "cour de Parlement"@fr;
-  skos:inScheme vocabulaire:ju;
-  skos:topConceptOf vocabulaire:ju .
-
-type:jumun a rico:LegalStatus, skos:Concept;
-  skos:notation "jumun";
-  skos:prefLabel "justice municipale"@fr;
-  rico:name "justice municipale"@fr;
-  skos:inScheme vocabulaire:ju;
-  skos:topConceptOf vocabulaire:ju .
-
-type:juroy a rico:LegalStatus, skos:Concept;
-  skos:notation "juroy";
-  skos:prefLabel "justice royale inférieure"@fr;
-  rico:name "justice royale inférieure"@fr;
-  skos:inScheme vocabulaire:ju;
-  skos:topConceptOf vocabulaire:ju .
-
-type:jusei a rico:LegalStatus, skos:Concept;
-  skos:notation "jusei";
-  skos:prefLabel "justice seigneuriale"@fr;
-  rico:name "justice seigneuriale"@fr;
-  skos:inScheme vocabulaire:ju;
-  skos:topConceptOf vocabulaire:ju .
-
-type:jueau a rico:LegalStatus, skos:Concept;
-  skos:notation "jueau";
-  skos:prefLabel "eaux et forêts"@fr;
-  rico:name "eaux et forêts"@fr;
-  skos:inScheme vocabulaire:ju;
-  skos:topConceptOf vocabulaire:ju .
-
-type:juoff a rico:LegalStatus, skos:Concept;
-  skos:notation "juoff";
-  skos:prefLabel "officialité"@fr;
-  rico:name "officialité"@fr;
-  skos:inScheme vocabulaire:ju;
-  skos:topConceptOf vocabulaire:ju .
-
-type:jupre a rico:LegalStatus, skos:Concept;
-  skos:notation "jupre";
-  skos:prefLabel "présidial"@fr;
-  rico:name "présidial"@fr;
-  skos:inScheme vocabulaire:ju;
-  skos:topConceptOf vocabulaire:ju .
-
-type:jusen a rico:LegalStatus, skos:Concept;
-  skos:notation "jusen";
-  skos:prefLabel "sénéchaussée"@fr;
-  rico:name "sénéchaussée"@fr;
-  skos:inScheme vocabulaire:ju;
-  skos:topConceptOf vocabulaire:ju .
-
-type:jutem a rico:LegalStatus, skos:Concept;
-  skos:notation "jutem";
-  skos:prefLabel "temporalité"@fr;
-  rico:name "temporalité"@fr;
-  skos:inScheme vocabulaire:ju;
-  skos:topConceptOf vocabulaire:ju .
-
-type:junon a rico:LegalStatus, skos:Concept;
-  skos:notation "junon";
-  skos:prefLabel "non déterminé"@fr;
-  rico:name "non déterminé"@fr;
-  skos:inScheme vocabulaire:ju;
-  skos:topConceptOf vocabulaire:ju .
-
-type:juaid a rico:LegalStatus, skos:Concept;
-  skos:notation "juaid";
-  skos:prefLabel "cour des aides et des monnaies"@fr;
-  rico:name "cour des aides et des monnaies"@fr;
-  skos:inScheme vocabulaire:ju;
-  skos:topConceptOf vocabulaire:ju .
-
-vocabulaire:id a skos:ConceptScheme;
-  skos:notation "id";
-  dct:coverage rico:Identifier;
-  dct:isRequiredBy rico:hasIdentifierType;
-  skos:prefLabel "Type d'identifiant"@fr;
-  skos:hasTopConcept type:idact, type:idcas, type:idins, type:idark .
-
-type:idact a rico:IdentifierType, skos:Concept;
-  skos:notation "idact";
-  skos:prefLabel "cote actuelle"@fr;
-  rico:name "cote actuelle"@fr;
-  skos:inScheme vocabulaire:id;
-  skos:topConceptOf vocabulaire:id .
-
-type:idcas a rico:IdentifierType, skos:Concept;
-  skos:notation "idcas";
-  skos:prefLabel "cote Castan"@fr;
-  rico:name "cote Castan"@fr;
-  skos:inScheme vocabulaire:id;
-  skos:topConceptOf vocabulaire:id .
-
-type:idins a rico:IdentifierType, skos:Concept;
-  skos:notation "idins";
-  skos:prefLabel "code INSEE"@fr;
-  rico:name "code INSEE"@fr;
-  skos:inScheme vocabulaire:id;
-  skos:topConceptOf vocabulaire:id .
-
-type:idark a rico:IdentifierType, skos:Concept;
-  skos:notation "idark";
-  skos:prefLabel "ID ARK"@fr;
-  rico:name "ID ARK"@fr;
-  skos:inScheme vocabulaire:id;
-  skos:topConceptOf vocabulaire:id .
-
-vocabulaire:fa a skos:ConceptScheme;
-  skos:notation "fa";
-  dct:coverage rico:Event;
-  dct:isRequiredBy rico:hasEventType;
-  dct:title "Qualification des faits";
-  dct:description "Thésaurus de mots-matières spécifiques, permettant de qualifier les faits sur un plan juridique. Saisi manuellement en se fondant sur les faits recensés dans la base de données des sacs à procès des Archives départementales de la Haute-Garonne. Des enrichissements, modifications de structure et alignements sont prévus dans les prochains mois. Nombre de concepts : 107.";
-  dct:creator "Archives départementales de la Haute-Garonne (France)";
-  dct:hasVersion "3.0";
-  dct:created "2006";
-  dct:modified "2023";
-  dct:source "Historique du traitement des sacs à procès aux Archives départementales de la Haute-Garonne (Geneviève Douillard, directrice adjointe des AD31 de 1978 à 2019, novembre 2020)";
-  dct:temporal "17e et 18e siècles";
-  skos:scopeNote "Ce thésaurus est utilisé par les Archives départementales de la Haute-Garonne pour qualifier les faits des affaires civiles et criminelles portées devant le Parlement de Toulouse sous l’Ancien régime. Son contenu reflète l’état actuel du dépouillement des sacs à procès du Parlement de Toulouse.";
-  skos:historyNote """. Création d’une base de données descriptive spécifique aux sacs à procès du Parlement de Toulouse en 2006.
-. Création, dans ce contexte, en 2006, d’une première liste d’autorité pour définir les « objets des procès » par les Archives départementales de la Haute-Garonne (G. Douillard, avec appui des étudiants vacataires sur les sacs à procès). Périmètre essentiellement sur les affaires criminelles : à noter que c’est parfois l’expression trouvée dans les documents qui a été utilisée quand elle n’a pas de traduction dans notre langue actuelle (ex : « émotion populaire »).
-. Révision et établissement d’une version 2 de cette liste par Jean Maurel, chercheur bénévole, sous le titre d’ « incriminations », organisée selon les chapitres « crimes contre l’ordre public », « crimes contre les personnes » et « crimes contre les biens ».
-. A partir de 2023, le dépouillement des affaires civiles est lancé par Myriam Daydé, archiviste des AD31 ; il en résulte l’ajout de nouveaux termes liés aux affaires civiles dans cette liste, et la révision de certains termes liés aux affaires criminelles.""";
-  skos:prefLabel "Qualification des faits"@fr;
-  skos:hasTopConcept type:faabu, type:faadu, type:faaff, type:faagr, type:faapp, type:faatt,
-    type:faavo, type:faban, type:fabes, type:fabla, type:fable, type:fabri, type:faill,
-    type:facha, type:faccb, type:faccs, type:facju, type:facin, type:fapos, type:facon,
-    type:facou, type:faboi, type:fadeb, type:fadeg, type:faecc, type:faeau, type:fadem,
-    type:fadep, type:fadet, type:fadif, type:faegl, type:faroi, type:fasei, type:fadue,
-    type:faemo, type:faemp, type:fapri, type:faenq, type:faesc, type:faeva, type:faexp,
-    type:faext, type:fafai, type:fafpc, type:famon, type:faecr, type:fafau, type:fafrg,
-    type:fafrt, type:fagra, type:faher, type:fafeu, type:fainc, type:faspi, type:fainf,
-    type:fainj, type:faora, type:fains, type:famaq, type:famen, type:fameu, type:famed,
-    type:fache, type:fainv, type:famit, type:famut, type:fanod, type:fanon, type:faobs,
-    type:fapar, type:fapas, type:fapec, type:fapor, type:faprc, type:fapre, type:fapro,
-    type:faprt, type:farap, type:farec, type:farel, type:farup, type:facnt, type:fasac,
-    type:fasai, type:faseq, type:fasor, type:faspo, type:faste, type:fasub, type:fasui,
-    type:fatro, type:famil, type:fausu, type:facli, type:faide, type:fauxo, type:favag,
-    type:favio, type:favpr, type:favce, type:fafam, type:favol, type:faeff, type:faave,
-    type:fagrd, type:fadom, type:faqua .
-
-type:faabu a rico:EventType, skos:Concept;
-  skos:notation "faabu";
-  skos:prefLabel "abus de pouvoir"@fr;
-  rico:name "abus de pouvoir"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q1975478>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faadu a rico:EventType, skos:Concept;
-  skos:notation "faadu";
-  skos:prefLabel "adultère"@fr;
-  rico:name "adultère"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q234213>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faaff a rico:EventType, skos:Concept;
-  skos:notation "faaff";
-  skos:prefLabel "affaire dotale"@fr;
-  rico:name "affaire dotale"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faagr a rico:EventType, skos:Concept;
-  skos:notation "faagr";
-  skos:prefLabel "agression préméditée"@fr;
-  rico:name "agression préméditée"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faapp a rico:EventType, skos:Concept;
-  skos:notation "faapp";
-  skos:prefLabel "appel de taxe"@fr;
-  rico:name "appel de taxe"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faatt a rico:EventType, skos:Concept;
-  skos:notation "faatt";
-  skos:prefLabel "attroupement"@fr;
-  rico:name "attroupement"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faavo a rico:EventType, skos:Concept;
-  skos:notation "faavo";
-  skos:prefLabel "avortement"@fr;
-  rico:name "avortement"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q8452>, <https://rdf.archives-nationales.culture.gouv.fr/thing/FRAN_RI_004-d3ndfh2pch--4emxa4w22sh4>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faban a rico:EventType, skos:Concept;
-  skos:notation "faban";
-  skos:prefLabel "banqueroute frauduleuse"@fr;
-  rico:name "banqueroute frauduleuse"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q68337771>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fabes a rico:EventType, skos:Concept;
-  skos:notation "fabes";
-  skos:prefLabel "bestialité"@fr;
-  rico:name "bestialité"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q830532>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fabla a rico:EventType, skos:Concept;
-  skos:notation "fabla";
-  skos:prefLabel "blasphème"@fr;
-  rico:name "blasphème"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fable a rico:EventType, skos:Concept;
-  skos:notation "fable";
-  skos:prefLabel "blessure avec arme à feu"@fr;
-  rico:name "blessure avec arme à feu"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fabri a rico:EventType, skos:Concept;
-  skos:notation "fabri";
-  skos:prefLabel "brigandage"@fr;
-  rico:name "brigandage"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q915425>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faill a rico:EventType, skos:Concept;
-  skos:notation "faill";
-  skos:prefLabel "change illégal"@fr;
-  rico:name "change illégal"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:facha a rico:EventType, skos:Concept;
-  skos:notation "facha";
-  skos:prefLabel "charivari"@fr;
-  rico:name "charivari"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q663109>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faccb a rico:EventType, skos:Concept;
-  skos:notation "faccb";
-  skos:prefLabel "concubinage"@fr;
-  rico:name "concubinage"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q188790>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faccs a rico:EventType, skos:Concept;
-  skos:notation "faccs";
-  skos:prefLabel "concussion"@fr;
-  rico:name "concussion"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q644071>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:facju a rico:EventType, skos:Concept;
-  skos:notation "facju";
-  skos:prefLabel "conflit de juridiction"@fr;
-  rico:name "conflit de juridiction"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q1797316>, <https://rdf.archives-nationales.culture.gouv.fr/thing/FRAN_RI_004-d3ndf39v2x--hrp6ypwssj2b>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:facin a rico:EventType, skos:Concept;
-  skos:notation "facin";
-  skos:prefLabel "conflit en instance féodale"@fr;
-  rico:name "conflit en instance féodale"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fapos a rico:EventType, skos:Concept;
-  skos:notation "fapos";
-  skos:prefLabel "conflit en possessoire"@fr;
-  rico:name "conflit en possessoire"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:facon a rico:EventType, skos:Concept;
-  skos:notation "facon";
-  skos:prefLabel "contravention à ordonnances de police"@fr;
-  rico:name "contravention à ordonnances de police"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:facou a rico:EventType, skos:Concept;
-  skos:notation "facou";
-  skos:prefLabel "coup et blessure"@fr;
-  rico:name "coup et blessure"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q1796687>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faboi a rico:EventType, skos:Concept;
-  skos:notation "faboi";
-  skos:prefLabel "coupe de bois illégale"@fr;
-  rico:name "coupe de bois illégale"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fadeb a rico:EventType, skos:Concept;
-  skos:notation "fadeb";
-  skos:prefLabel "débauche"@fr;
-  rico:name "débauche"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q3042350>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fadeg a rico:EventType, skos:Concept;
-  skos:notation "fadeg";
-  skos:prefLabel "dégradation de bien"@fr;
-  rico:name "dégradation de bien"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q6160>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faecc a rico:EventType, skos:Concept;
-  skos:notation "faecc";
-  skos:prefLabel "délinquance ecclésiastique"@fr;
-  rico:name "délinquance ecclésiastique"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faeau a rico:EventType, skos:Concept;
-  skos:notation "faeau";
-  skos:prefLabel "délit d'usage d'eau"@fr;
-  rico:name "délit d'usage d'eau"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fadem a rico:EventType, skos:Concept;
-  skos:notation "fadem";
-  skos:prefLabel "demande d'élargissement"@fr;
-  rico:name "demande d'élargissement"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fadep a rico:EventType, skos:Concept;
-  skos:notation "fadep";
-  skos:prefLabel "dépaissance de bestiaux"@fr;
-  rico:name "dépaissance de bestiaux"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fadet a rico:EventType, skos:Concept;
-  skos:notation "fadet";
-  skos:prefLabel "dette"@fr;
-  rico:name "dette"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q3196867>, <https://rdf.archives-nationales.culture.gouv.fr/thing/FRAN_RI_004-d3ndf4wlxp--133j0mogpp35q>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fadif a rico:EventType, skos:Concept;
-  skos:notation "fadif";
-  skos:prefLabel "diffamation"@fr;
-  rico:name "diffamation"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q191783>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faegl a rico:EventType, skos:Concept;
-  skos:notation "faegl";
-  skos:prefLabel "droit de l'Église contesté"@fr;
-  rico:name "droit de l'Église contesté"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faroi a rico:EventType, skos:Concept;
-  skos:notation "faroi";
-  skos:prefLabel "droit du roi contesté"@fr;
-  rico:name "droit du roi contesté"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fasei a rico:EventType, skos:Concept;
-  skos:notation "fasei";
-  skos:prefLabel "droit seigneurial contesté"@fr;
-  rico:name "droit seigneurial contesté"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fadue a rico:EventType, skos:Concept;
-  skos:notation "fadue";
-  skos:prefLabel "duel"@fr;
-  rico:name "duel"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q191503>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faemo a rico:EventType, skos:Concept;
-  skos:notation "faemo";
-  skos:prefLabel "émotion populaire"@fr;
-  rico:name "émotion populaire"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q124757>, <https://rdf.archives-nationales.culture.gouv.fr/thing/FRAN_RI_004-d3ndeqxsbr--vbwieox3j06t>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faemp a rico:EventType, skos:Concept;
-  skos:notation "faemp";
-  skos:prefLabel "empoisonnement"@fr;
-  rico:name "empoisonnement"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q51159762>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fapri a rico:EventType, skos:Concept;
-  skos:notation "fapri";
-  skos:prefLabel "emprisonnement abusif"@fr;
-  rico:name "emprisonnement abusif"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faenq a rico:EventType, skos:Concept;
-  skos:notation "faenq";
-  skos:prefLabel "enquête d'office sur la vie et les mœurs"@fr;
-  rico:name "enquête d'office sur la vie et les mœurs"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faesc a rico:EventType, skos:Concept;
-  skos:notation "faesc";
-  skos:prefLabel "escroquerie"@fr;
-  rico:name "escroquerie"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q7023752>, <https://rdf.archives-nationales.culture.gouv.fr/thing/FRAN_RI_004-d3ndf33wtd--s9zyskfwqmcx>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faeva a rico:EventType, skos:Concept;
-  skos:notation "faeva";
-  skos:prefLabel "évasion"@fr;
-  rico:name "évasion"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q598041>, <https://rdf.archives-nationales.culture.gouv.fr/thing/FRAN_RI_004-d3ndf2w9z6--15s8x56cnptls>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faexp a rico:EventType, skos:Concept;
-  skos:notation "faexp";
-  skos:prefLabel "exposition d'enfant"@fr;
-  rico:name "exposition d'enfant"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q202415>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faext a rico:EventType, skos:Concept;
-  skos:notation "faext";
-  skos:prefLabel "extorsion de contrat"@fr;
-  rico:name "extorsion de contrat"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fafai a rico:EventType, skos:Concept;
-  skos:notation "fafai";
-  skos:prefLabel "fait de chasse"@fr;
-  rico:name "fait de chasse"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fafpc a rico:EventType, skos:Concept;
-  skos:notation "fafpc";
-  skos:prefLabel "fait de pêche"@fr;
-  rico:name "fait de pêche"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:famon a rico:EventType, skos:Concept;
-  skos:notation "famon";
-  skos:prefLabel "fausse monnaie"@fr;
-  rico:name "fausse monnaie"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/thing/FRAN_RI_004-d3ndf30czl-1vq7aau0allmv>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faecr a rico:EventType, skos:Concept;
-  skos:notation "faecr";
-  skos:prefLabel "faux en écriture"@fr;
-  rico:name "faux en écriture"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q693988>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fafau a rico:EventType, skos:Concept;
-  skos:notation "fafau";
-  skos:prefLabel "faux témoignages"@fr;
-  rico:name "faux témoignages"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q51164257>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fafrg a rico:EventType, skos:Concept;
-  skos:notation "fafrg";
-  skos:prefLabel "fragment de procédure"@fr;
-  rico:name "fragment de procédure"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fafrt a rico:EventType, skos:Concept;
-  skos:notation "fafrt";
-  skos:prefLabel "fratricide"@fr;
-  rico:name "fratricide"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q992216>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fagra a rico:EventType, skos:Concept;
-  skos:notation "fagra";
-  skos:prefLabel "gravidation"@fr;
-  rico:name "gravidation"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faher a rico:EventType, skos:Concept;
-  skos:notation "faher";
-  skos:prefLabel "héritage"@fr;
-  rico:name "héritage"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q200303>, <https://rdf.archives-nationales.culture.gouv.fr/thing/FRAN_RI_004-d3ndf291tl--ob1zvvby3f8r>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fafeu a rico:EventType, skos:Concept;
-  skos:notation "fafeu";
-  skos:prefLabel "incendie"@fr;
-  rico:name "incendie"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q327541>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fainc a rico:EventType, skos:Concept;
-  skos:notation "fainc";
-  skos:prefLabel "inceste"@fr;
-  rico:name "inceste"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q127683>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faspi a rico:EventType, skos:Concept;
-  skos:notation "faspi";
-  skos:prefLabel "inceste spirituel"@fr;
-  rico:name "inceste spirituel"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fainf a rico:EventType, skos:Concept;
-  skos:notation "fainf";
-  skos:prefLabel "infanticide"@fr;
-  rico:name "infanticide"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q916412>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fainj a rico:EventType, skos:Concept;
-  skos:notation "fainj";
-  skos:prefLabel "injure écrite"@fr;
-  rico:name "injure écrite"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faora a rico:EventType, skos:Concept;
-  skos:notation "faora";
-  skos:prefLabel "injure orale"@fr;
-  rico:name "injure orale"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fains a rico:EventType, skos:Concept;
-  skos:notation "fains";
-  skos:prefLabel "insubordination d'un domestique"@fr;
-  rico:name "insubordination d'un domestique"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:famaq a rico:EventType, skos:Concept;
-  skos:notation "famaq";
-  skos:prefLabel "maquerellage"@fr;
-  rico:name "maquerellage"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:famen a rico:EventType, skos:Concept;
-  skos:notation "famen";
-  skos:prefLabel "menace"@fr;
-  rico:name "menace"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q707125>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fameu a rico:EventType, skos:Concept;
-  skos:notation "fameu";
-  skos:prefLabel "meurtre"@fr;
-  rico:name "meurtre"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q132821>, <https://rdf.archives-nationales.culture.gouv.fr/thing/FRAN_RI_004-d3ndf30v3g-lhck6trxkg7p>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:famed a rico:EventType, skos:Concept;
-  skos:notation "famed";
-  skos:prefLabel "meurtre de dément"@fr;
-  rico:name "meurtre de dément"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fache a rico:EventType, skos:Concept;
-  skos:notation "fache";
-  skos:prefLabel "meurtre de grand chemin"@fr;
-  rico:name "meurtre de grand chemin"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fainv a rico:EventType, skos:Concept;
-  skos:notation "fainv";
-  skos:prefLabel "meurtre involontaire"@fr;
-  rico:name "meurtre involontaire"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q641449>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:famit a rico:EventType, skos:Concept;
-  skos:notation "famit";
-  skos:prefLabel "mitoyenneté"@fr;
-  rico:name "mitoyenneté"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q882118>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:famut a rico:EventType, skos:Concept;
-  skos:notation "famut";
-  skos:prefLabel "mutilation"@fr;
-  rico:name "mutilation"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q767568>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fanod a rico:EventType, skos:Concept;
-  skos:notation "fanod";
-  skos:prefLabel "non déterminé"@fr;
-  rico:name "non déterminé"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fanon a rico:EventType, skos:Concept;
-  skos:notation "fanon";
-  skos:prefLabel "non-respect de la censure"@fr;
-  rico:name "non-respect de la censure"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faobs a rico:EventType, skos:Concept;
-  skos:notation "faobs";
-  skos:prefLabel "obstruction à justice"@fr;
-  rico:name "obstruction à justice"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q525302>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fapar a rico:EventType, skos:Concept;
-  skos:notation "fapar";
-  skos:prefLabel "parricide"@fr;
-  rico:name "parricide"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q51159758>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fapas a rico:EventType, skos:Concept;
-  skos:notation "fapas";
-  skos:prefLabel "passage contesté"@fr;
-  rico:name "passage contesté"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fapec a rico:EventType, skos:Concept;
-  skos:notation "fapec";
-  skos:prefLabel "péculat"@fr;
-  rico:name "péculat"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q10752197>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fapor a rico:EventType, skos:Concept;
-  skos:notation "fapor";
-  skos:prefLabel "port d'armes"@fr;
-  rico:name "port d'armes"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/thing/FRAN_RI_004-d3ndevxh1v-19awcipr7er91>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faprc a rico:EventType, skos:Concept;
-  skos:notation "faprc";
-  skos:prefLabel "préséance contestée"@fr;
-  rico:name "préséance contestée"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fapre a rico:EventType, skos:Concept;
-  skos:notation "fapre";
-  skos:prefLabel "prévarication"@fr;
-  rico:name "prévarication"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q572817>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fapro a rico:EventType, skos:Concept;
-  skos:notation "fapro";
-  skos:prefLabel "prostitution"@fr;
-  rico:name "prostitution"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q36633>, <https://rdf.archives-nationales.culture.gouv.fr/thing/FRAN_RI_004-d3ndfi91s7-19lv1tkkffrok>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faprt a rico:EventType, skos:Concept;
-  skos:notation "faprt";
-  skos:prefLabel "protestant"@fr;
-  rico:name "protestant"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q23540>, <https://rdf.archives-nationales.culture.gouv.fr/thing/FRAN_RI_004-d3ndfrvuzn-1gjs7ju88pq3s>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:farap a rico:EventType, skos:Concept;
-  skos:notation "farap";
-  skos:prefLabel "rapt"@fr;
-  rico:name "rapt"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q318296>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:farec a rico:EventType, skos:Concept;
-  skos:notation "farec";
-  skos:prefLabel "recel"@fr;
-  rico:name "recel"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q708433>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:farel a rico:EventType, skos:Concept;
-  skos:notation "farel";
-  skos:prefLabel "relaps"@fr;
-  rico:name "relaps"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q3424014>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:farup a rico:EventType, skos:Concept;
-  skos:notation "farup";
-  skos:prefLabel "rupture de ban"@fr;
-  rico:name "rupture de ban"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q51164265>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:facnt a rico:EventType, skos:Concept;
-  skos:notation "facnt";
-  skos:prefLabel "rupture de contrat"@fr;
-  rico:name "rupture de contrat"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fasac a rico:EventType, skos:Concept;
-  skos:notation "fasac";
-  skos:prefLabel "sacrilège"@fr;
-  rico:name "sacrilège"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q180362>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fasai a rico:EventType, skos:Concept;
-  skos:notation "fasai";
-  skos:prefLabel "saisie"@fr;
-  rico:name "saisie"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faseq a rico:EventType, skos:Concept;
-  skos:notation "faseq";
-  skos:prefLabel "séquestration"@fr;
-  rico:name "séquestration"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q694752>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fasor a rico:EventType, skos:Concept;
-  skos:notation "fasor";
-  skos:prefLabel "sorcellerie"@fr;
-  rico:name "sorcellerie"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q259745>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faspo a rico:EventType, skos:Concept;
-  skos:notation "faspo";
-  skos:prefLabel "spoliation"@fr;
-  rico:name "spoliation"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faste a rico:EventType, skos:Concept;
-  skos:notation "faste";
-  skos:prefLabel "stellionat"@fr;
-  rico:name "stellionat"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q3498173>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fasub a rico:EventType, skos:Concept;
-  skos:notation "fasub";
-  skos:prefLabel "subornation de témoins"@fr;
-  rico:name "subornation de témoins"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q3502604>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fasui a rico:EventType, skos:Concept;
-  skos:notation "fasui";
-  skos:prefLabel "suicide"@fr;
-  rico:name "suicide"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q10737>, <https://rdf.archives-nationales.culture.gouv.fr/thing/FRAN_RI_004-d3ndfi9qcv-kdoqp8h43cjs>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fatro a rico:EventType, skos:Concept;
-  skos:notation "fatro";
-  skos:prefLabel "trouble à l'exercice divin"@fr;
-  rico:name "trouble à l'exercice divin"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:famil a rico:EventType, skos:Concept;
-  skos:notation "famil";
-  skos:prefLabel "trouble causé par des militaires"@fr;
-  rico:name "trouble causé par des militaires"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fausu a rico:EventType, skos:Concept;
-  skos:notation "fausu";
-  skos:prefLabel "usure"@fr;
-  rico:name "usure"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q157188>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:facli a rico:EventType, skos:Concept;
-  skos:notation "facli";
-  skos:prefLabel "usurpation de clientèle"@fr;
-  rico:name "usurpation de clientèle"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faide a rico:EventType, skos:Concept;
-  skos:notation "faide";
-  skos:prefLabel "usurpation d'identité"@fr;
-  rico:name "usurpation d'identité"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q471880>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fauxo a rico:EventType, skos:Concept;
-  skos:notation "fauxo";
-  skos:prefLabel "uxoricide"@fr;
-  rico:name "uxoricide"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q1076426>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:favag a rico:EventType, skos:Concept;
-  skos:notation "favag";
-  skos:prefLabel "vagabondage"@fr;
-  rico:name "vagabondage"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q23906234>, <https://rdf.archives-nationales.culture.gouv.fr/thing/FRAN_RI_004-d3ndfi4r0f--tcydec1k2c4d>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:favio a rico:EventType, skos:Concept;
-  skos:notation "favio";
-  skos:prefLabel "viol"@fr;
-  rico:name "viol"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q47092>, <https://rdf.archives-nationales.culture.gouv.fr/thing/FRAN_RI_004-d3ndf2zuvq--1wygl7tukkrt4>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:favpr a rico:EventType, skos:Concept;
-  skos:notation "favpr";
-  skos:prefLabel "viol de propriété"@fr;
-  rico:name "viol de propriété"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:favce a rico:EventType, skos:Concept;
-  skos:notation "favce";
-  skos:prefLabel "violence"@fr;
-  rico:name "violence"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q124490>, <https://rdf.archives-nationales.culture.gouv.fr/thing/FRAN_RI_004-d3ndewm6g7-l89ebyyzfgv>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fafam a rico:EventType, skos:Concept;
-  skos:notation "fafam";
-  skos:prefLabel "violence familiale"@fr;
-  rico:name "violence familiale"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q156537>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:favol a rico:EventType, skos:Concept;
-  skos:notation "favol";
-  skos:prefLabel "vol"@fr;
-  rico:name "vol"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q2727213>, <https://rdf.archives-nationales.culture.gouv.fr/thing/FRAN_RI_004-d3ndf36il0-1o9ho1bi69nha>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faeff a rico:EventType, skos:Concept;
-  skos:notation "faeff";
-  skos:prefLabel "vol avec effraction"@fr;
-  rico:name "vol avec effraction"@fr;
-  skos:exactMatch <https://www.wikidata.org/wiki/Q24616242>;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faave a rico:EventType, skos:Concept;
-  skos:notation "faave";
-  skos:prefLabel "vol avec récidive"@fr;
-  rico:name "vol avec récidive"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fagrd a rico:EventType, skos:Concept;
-  skos:notation "fagrd";
-  skos:prefLabel "vol de grand chemin"@fr;
-  rico:name "vol de grand chemin"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:fadom a rico:EventType, skos:Concept;
-  skos:notation "fadom";
-  skos:prefLabel "vol domestique"@fr;
-  rico:name "vol domestique"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-type:faqua a rico:EventType, skos:Concept;
-  skos:notation "faqua";
-  skos:prefLabel "vol qualifié"@fr;
-  rico:name "vol qualifié"@fr;
-  skos:inScheme vocabulaire:fa;
-  skos:topConceptOf vocabulaire:fa .
-
-vocabulaire:li a skos:ConceptScheme;
-  skos:notation "li";
-  dct:coverage rico:Place;
-  dct:isRequiredBy rico:hasOrHadPlaceType;
-  dct:title "Types de lieux";
-  dct:description "Thésaurus des types de lieux (entités géo-historiques). Saisi manuellement en se fondant sur les catégories de lieux sous-jacentes ou implicites dans les référentiels de lieux de la base de données des sacs à procès des Archives départementales de la Haute-Garonne. Des enrichissements, modifications de structure et alignements sont prévus dans les prochains mois. Nombre de concepts : 39.";
-  dct:creator "Archives départementales de la Haute-Garonne (France)";
-  dct:hasVersion "1.0";
-  dct:created "2025";
-  dct:modified "2025";
-  skos:prefLabel "Type de lieu"@fr;
-  skos:hasTopConcept type:licom, type:licou, type:lidep, type:lilie, type:liqua, type:lireg,
-    type:lisei, type:liabb, type:lianc, type:lican, type:licat, type:lichp, type:licha,
-    type:liche, type:licol, type:lidom, type:liegl, type:liexp, type:lifau, type:lifor,
-    type:lihop, type:lipre, type:livil, type:liimp, type:lilac, type:limon, type:limou,
-    type:lipal, type:lipar, type:lipla, type:lipon, type:lipor, type:lipot, type:lipri,
-    type:liprs, type:lipui, type:lirou, type:lirue .
-
-type:licom a rico:PlaceType, skos:Concept;
-  skos:notation "licom";
-  skos:prefLabel "commune"@fr;
-  rico:name "commune"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/placeType/commune>;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:licou a rico:PlaceType, skos:Concept;
-  skos:notation "licou";
-  skos:prefLabel "cours d'eau"@fr;
-  rico:name "cours d'eau"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/placeType/cours%20d%E2%80%99eau>;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lidep a rico:PlaceType, skos:Concept;
-  skos:notation "lidep";
-  skos:prefLabel "département"@fr;
-  rico:name "département"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/placeType/d%C3%A9partement>;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lilie a rico:PlaceType, skos:Concept;
-  skos:notation "lilie";
-  skos:prefLabel "lieu-dit"@fr;
-  rico:name "lieu-dit"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/placeType/lieu-dit>;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:liqua a rico:PlaceType, skos:Concept;
-  skos:notation "liqua";
-  skos:prefLabel "quartier"@fr;
-  rico:name "quartier"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/placeType/prison>;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lireg a rico:PlaceType, skos:Concept;
-  skos:notation "lireg";
-  skos:prefLabel "région naturelle"@fr;
-  rico:name "région naturelle"@fr;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lisei a rico:PlaceType, skos:Concept;
-  skos:notation "lisei";
-  skos:prefLabel "seigneurie"@fr;
-  rico:name "seigneurie"@fr;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:liabb a rico:PlaceType, skos:Concept;
-  skos:notation "liabb";
-  skos:prefLabel "abbaye"@fr;
-  rico:name "abbaye"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/placeType/abbaye>;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lianc a rico:PlaceType, skos:Concept;
-  skos:notation "lianc";
-  skos:prefLabel "ancienne commune"@fr;
-  rico:name "ancienne commune"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/placeType/ancienne%20commune>;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lican a rico:PlaceType, skos:Concept;
-  skos:notation "lican";
-  skos:prefLabel "canal"@fr;
-  rico:name "canal"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/placeType/canal>;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:licat a rico:PlaceType, skos:Concept;
-  skos:notation "licat";
-  skos:prefLabel "cathédrale"@fr;
-  rico:name "cathédrale"@fr;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lichp a rico:PlaceType, skos:Concept;
-  skos:notation "lichp";
-  skos:prefLabel "chapelle"@fr;
-  rico:name "chapelle"@fr;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:licha a rico:PlaceType, skos:Concept;
-  skos:notation "licha";
-  skos:prefLabel "château"@fr;
-  rico:name "château"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/placeType/ch%C3%A2teau>;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:liche a rico:PlaceType, skos:Concept;
-  skos:notation "liche";
-  skos:prefLabel "chemin"@fr;
-  rico:name "chemin"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/placeType/chemin>;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:licol a rico:PlaceType, skos:Concept;
-  skos:notation "licol";
-  skos:prefLabel "collège (avant 1790)"@fr;
-  rico:name "collège (avant 1790)"@fr;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lidom a rico:PlaceType, skos:Concept;
-  skos:notation "lidom";
-  skos:prefLabel "domaine"@fr;
-  rico:name "domaine"@fr;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:liegl a rico:PlaceType, skos:Concept;
-  skos:notation "liegl";
-  skos:prefLabel "église"@fr;
-  rico:name "église"@fr;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:liexp a rico:PlaceType, skos:Concept;
-  skos:notation "liexp";
-  skos:prefLabel "exploitation agricole"@fr;
-  rico:name "exploitation agricole"@fr;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lifau a rico:PlaceType, skos:Concept;
-  skos:notation "lifau";
-  skos:prefLabel "faubourg"@fr;
-  rico:name "faubourg"@fr;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lifor a rico:PlaceType, skos:Concept;
-  skos:notation "lifor";
-  skos:prefLabel "forge"@fr;
-  rico:name "forge"@fr;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lihop a rico:PlaceType, skos:Concept;
-  skos:notation "lihop";
-  skos:prefLabel "hôpital"@fr;
-  rico:name "hôpital"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/placeType/h%C3%B4pital>;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lipre a rico:PlaceType, skos:Concept;
-  skos:notation "lipre";
-  skos:prefLabel "hôtel de prévôté"@fr;
-  rico:name "hôtel de prévôté"@fr;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:livil a rico:PlaceType, skos:Concept;
-  skos:notation "livil";
-  skos:prefLabel "hôtel de ville"@fr;
-  rico:name "hôtel de ville"@fr;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:liimp a rico:PlaceType, skos:Concept;
-  skos:notation "liimp";
-  skos:prefLabel "impasse"@fr;
-  rico:name "impasse"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/placeType/impasse>;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lilac a rico:PlaceType, skos:Concept;
-  skos:notation "lilac";
-  skos:prefLabel "lac"@fr;
-  rico:name "lac"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/placeType/lac>;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:limon a rico:PlaceType, skos:Concept;
-  skos:notation "limon";
-  skos:prefLabel "monastère"@fr;
-  rico:name "monastère"@fr;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:limou a rico:PlaceType, skos:Concept;
-  skos:notation "limou";
-  skos:prefLabel "moulin"@fr;
-  rico:name "moulin"@fr;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lipal a rico:PlaceType, skos:Concept;
-  skos:notation "lipal";
-  skos:prefLabel "palais archiépiscopal"@fr;
-  rico:name "palais archiépiscopal"@fr;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lipar a rico:PlaceType, skos:Concept;
-  skos:notation "lipar";
-  skos:prefLabel "paroisse"@fr;
-  rico:name "paroisse"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/placeType/paroisse>;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lipla a rico:PlaceType, skos:Concept;
-  skos:notation "lipla";
-  skos:prefLabel "place"@fr;
-  rico:name "place"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/placeType/place>;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lipon a rico:PlaceType, skos:Concept;
-  skos:notation "lipon";
-  skos:prefLabel "pont"@fr;
-  rico:name "pont"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/placeType/pont>;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lipor a rico:PlaceType, skos:Concept;
-  skos:notation "lipor";
-  skos:prefLabel "port"@fr;
-  rico:name "port"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/placeType/port>;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lipot a rico:PlaceType, skos:Concept;
-  skos:notation "lipot";
-  skos:prefLabel "porte"@fr;
-  rico:name "porte"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/placeType/porte>;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lipri a rico:PlaceType, skos:Concept;
-  skos:notation "lipri";
-  skos:prefLabel "prieuré"@fr;
-  rico:name "prieuré"@fr;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:liprs a rico:PlaceType, skos:Concept;
-  skos:notation "liprs";
-  skos:prefLabel "prison"@fr;
-  rico:name "prison"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/placeType/prison>;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lipui a rico:PlaceType, skos:Concept;
-  skos:notation "lipui";
-  skos:prefLabel "puit"@fr;
-  rico:name "puit"@fr;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lirou a rico:PlaceType, skos:Concept;
-  skos:notation "lirou";
-  skos:prefLabel "route"@fr;
-  rico:name "route"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/placeType/route>;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-type:lirue a rico:PlaceType, skos:Concept;
-  skos:notation "lirue";
-  skos:prefLabel "rue"@fr;
-  rico:name "rue"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/placeType/rue>;
-  skos:inScheme vocabulaire:li;
-  skos:topConceptOf vocabulaire:li .
-
-vocabulaire:pr a skos:ConceptScheme;
-  skos:notation "pr";
-  dct:coverage rico:Person;
-  dct:isRequiredBy rico:hasOrHadOccupationOfType;
-  dct:title "Types de professions";
-  dct:description "Thésaurus des types de lieux (entités géo-historiques). Saisi manuellement en se fondant sur les catégories de lieux sous-jacentes ou implicites dans les référentiels de lieux de la base de données des sacs à procès des Archives départementales de la Haute-Garonne. Des enrichissements, modifications de structure et alignements sont prévus dans les prochains mois. Nombre de concepts : 41.";
-  skos:prefLabel "Type de profession"@fr;
-  skos:hasTopConcept type:prarc, type:prarp, type:prarn, type:prart, type:prbou, type:prbri,
-    type:prcom, type:prcon, type:prdet, type:precu, type:prens, type:prent, type:pretu,
-    type:prfer, type:prgeo, type:prgra, type:prgre, type:prhot, type:prhui, type:prind,
-    type:prmar, type:prmeu, type:prmil, type:prmus, type:prnot, type:proff, type:prpec,
-    type:prper, type:prpra, type:pragr, type:prsan, type:prfin, type:prjur, type:prdro,
-    type:prpro, type:prrel, type:prsei, type:prseq, type:prtra, type:prtrv, type:prnon .
-
-type:prarc a rico:OccupationType, skos:Concept;
-  skos:notation "prarc";
-  skos:prefLabel "architecte"@fr;
-  rico:name "architecte"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d3nyu9yq7p-8zx3tnvrcpf0>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prarp a rico:OccupationType, skos:Concept;
-  skos:notation "prarp";
-  skos:prefLabel "arpenteur"@fr;
-  rico:name "arpenteur"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d699msisgsg-17be3aqlxc1gm>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prarn a rico:OccupationType, skos:Concept;
-  skos:notation "prarn";
-  skos:prefLabel "artisan·e"@fr;
-  rico:name "artisan·e"@fr;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prart a rico:OccupationType, skos:Concept;
-  skos:notation "prart";
-  skos:prefLabel "artiste"@fr;
-  rico:name "artiste"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d699msjzppc-y5cl997d1hxn>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prbou a rico:OccupationType, skos:Concept;
-  skos:notation "prbou";
-  skos:prefLabel "bourgeois·e"@fr;
-  rico:name "bourgeois·e"@fr;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prbri a rico:OccupationType, skos:Concept;
-  skos:notation "prbri";
-  skos:prefLabel "brigand·e"@fr;
-  rico:name "brigand·e"@fr;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prcom a rico:OccupationType, skos:Concept;
-  skos:notation "prcom";
-  skos:prefLabel "commis"@fr;
-  rico:name "commis"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d-78fgtdfkw-r8n4a29cez1l>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prcon a rico:OccupationType, skos:Concept;
-  skos:notation "prcon";
-  skos:prefLabel "consul"@fr;
-  rico:name "consul"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d-1jcitfegi20-19rkja1mzd9x0>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prdet a rico:OccupationType, skos:Concept;
-  skos:notation "prdet";
-  skos:prefLabel "détenu·e"@fr;
-  rico:name "détenu·e"@fr;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:precu a rico:OccupationType, skos:Concept;
-  skos:notation "precu";
-  skos:prefLabel "écuyer"@fr;
-  rico:name "écuyer"@fr;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prens a rico:OccupationType, skos:Concept;
-  skos:notation "prens";
-  skos:prefLabel "enseignant"@fr;
-  rico:name "enseignant"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d699msj02xm-19qbb7wdtto3j>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prent a rico:OccupationType, skos:Concept;
-  skos:notation "prent";
-  skos:prefLabel "entrepreneur d'ouvrages publics"@fr;
-  rico:name "entrepreneur d'ouvrages publics"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d699msjj72d-1dedn4099xfyy>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:pretu a rico:OccupationType, skos:Concept;
-  skos:notation "pretu";
-  skos:prefLabel "étudiant"@fr;
-  rico:name "étudiant"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d699msiuplv-buy47vop2pf8>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prfer a rico:OccupationType, skos:Concept;
-  skos:notation "prfer";
-  skos:prefLabel "fermier"@fr;
-  rico:name "fermier"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d3m0bl759we-1qfz4kgpyc2dp>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prgeo a rico:OccupationType, skos:Concept;
-  skos:notation "prgeo";
-  skos:prefLabel "geôlier"@fr;
-  rico:name "geôlier"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d699msk1b5a-1jeudel8awe1j>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prgra a rico:OccupationType, skos:Concept;
-  skos:notation "prgra";
-  skos:prefLabel "grammairien"@fr;
-  rico:name "grammairien"@fr;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prgre a rico:OccupationType, skos:Concept;
-  skos:notation "prgre";
-  skos:prefLabel "greffier"@fr;
-  rico:name "greffier"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d699msjovhg--1j7xh1r7jq96w>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prhot a rico:OccupationType, skos:Concept;
-  skos:notation "prhot";
-  skos:prefLabel "hôtelier·ère"@fr;
-  rico:name "hôtelier·ère"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d699msjlxpk--sg4j75rpsw7m>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prhui a rico:OccupationType, skos:Concept;
-  skos:notation "prhui";
-  skos:prefLabel "huissier"@fr;
-  rico:name "huissier"@fr;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prind a rico:OccupationType, skos:Concept;
-  skos:notation "prind";
-  skos:prefLabel "indigent·e"@fr;
-  rico:name "indigent·e"@fr;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prmar a rico:OccupationType, skos:Concept;
-  skos:notation "prmar";
-  skos:prefLabel "marchand·e"@fr;
-  rico:name "marchand·e"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d699msja67p--7kxb9z0cvgzw>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prmeu a rico:OccupationType, skos:Concept;
-  skos:notation "prmeu";
-  skos:prefLabel "meunier"@fr;
-  rico:name "meunier"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d3nyu9wj3q--zbhn87kjg3md>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prmil a rico:OccupationType, skos:Concept;
-  skos:notation "prmil";
-  skos:prefLabel "militaire"@fr;
-  rico:name "militaire"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d699msj53l0-1180obzunmkm7>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prmus a rico:OccupationType, skos:Concept;
-  skos:notation "prmus";
-  skos:prefLabel "musicien"@fr;
-  rico:name "musicien"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d699msjsrq5--1mbyt7s1ucsrc>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prnot a rico:OccupationType, skos:Concept;
-  skos:notation "prnot";
-  skos:prefLabel "notaire"@fr;
-  rico:name "notaire"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d3nyu9x713-9kcjiv44l4wh>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:proff a rico:OccupationType, skos:Concept;
-  skos:notation "proff";
-  skos:prefLabel "officier"@fr;
-  rico:name "officier"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d3m0bl75sip--2yj381pxz223>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prpec a rico:OccupationType, skos:Concept;
-  skos:notation "prpec";
-  skos:prefLabel "pêcheur·euse"@fr;
-  rico:name "pêcheur·euse"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d699msjl5z8--1254co0xv7uhm>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prper a rico:OccupationType, skos:Concept;
-  skos:notation "prper";
-  skos:prefLabel "personnel de maison"@fr;
-  rico:name "personnel de maison"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d699msj43xg--z4sg02667lbi>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prpra a rico:OccupationType, skos:Concept;
-  skos:notation "prpra";
-  skos:prefLabel "praticien"@fr;
-  rico:name "praticien"@fr;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:pragr a rico:OccupationType, skos:Concept;
-  skos:notation "pragr";
-  skos:prefLabel "profession agricole"@fr;
-  rico:name "profession agricole"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d699msjbjqf--1uzbe260ejrd5>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prsan a rico:OccupationType, skos:Concept;
-  skos:notation "prsan";
-  skos:prefLabel "profession de santé"@fr;
-  rico:name "profession de santé"@fr;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prfin a rico:OccupationType, skos:Concept;
-  skos:notation "prfin";
-  skos:prefLabel "profession financière"@fr;
-  rico:name "profession financière"@fr;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prjur a rico:OccupationType, skos:Concept;
-  skos:notation "prjur";
-  skos:prefLabel "profession juridique"@fr;
-  rico:name "profession juridique"@fr;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prdro a rico:OccupationType, skos:Concept;
-  skos:notation "prdro";
-  skos:prefLabel "professionnel du droit"@fr;
-  rico:name "professionnel du droit"@fr;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prpro a rico:OccupationType, skos:Concept;
-  skos:notation "prpro";
-  skos:prefLabel "prostituée"@fr;
-  rico:name "prostituée"@fr;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prrel a rico:OccupationType, skos:Concept;
-  skos:notation "prrel";
-  skos:prefLabel "religieux·euse"@fr;
-  rico:name "religieux·euse"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d699msikopd--xib7lmf6g7up>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prsei a rico:OccupationType, skos:Concept;
-  skos:notation "prsei";
-  skos:prefLabel "seigneur·esse"@fr;
-  rico:name "seigneur·esse"@fr;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prseq a rico:OccupationType, skos:Concept;
-  skos:notation "prseq";
-  skos:prefLabel "séquestre"@fr;
-  rico:name "séquestre"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d3m0bl759we-1qfz4kgpyc2dp>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prtra a rico:OccupationType, skos:Concept;
-  skos:notation "prtra";
-  skos:prefLabel "transporteur·euse"@fr;
-  rico:name "transporteur·euse"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d699msk3vga-1k73o45nksby8>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prtrv a rico:OccupationType, skos:Concept;
-  skos:notation "prtrv";
-  skos:prefLabel "travailleur"@fr;
-  rico:name "travailleur"@fr;
-  skos:exactMatch <https://rdf.archives-nationales.culture.gouv.fr/occupationType/FRAN_RI_010-d-7iqrh5lk4-qd3y38jcntc4>;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-type:prnon a rico:OccupationType, skos:Concept;
-  skos:notation "prnon";
-  skos:prefLabel "non relevé"@fr;
-  rico:name "non relevé"@fr;
-  skos:inScheme vocabulaire:pr;
-  skos:topConceptOf vocabulaire:pr .
-
-vocabulaire:ac a skos:ConceptScheme;
-  skos:notation "ac";
-  dct:coverage rico:Activity;
-  dct:isRequiredBy rico:hasActivityType;
-  skos:prefLabel "Type d'activité"@fr;
-  skos:hasTopConcept type:acins, type:acpro, type:accam, type:acdep, type:acsai, type:acrel,
-    type:accor .
-
-type:acins a rico:ActivityType, skos:Concept;
-  skos:notation "acins";
-  skos:prefLabel "instruction"@fr;
-  rico:name "instruction"@fr;
-  skos:inScheme vocabulaire:ac;
-  skos:topConceptOf vocabulaire:ac .
-
-type:acpro a rico:ActivityType, skos:Concept;
-  skos:notation "acpro";
-  skos:prefLabel "procédure"@fr;
-  rico:name "procédure"@fr;
-  skos:inScheme vocabulaire:ac;
-  skos:topConceptOf vocabulaire:ac .
-
-type:accam a rico:ActivityType, skos:Concept;
-  skos:notation "accam";
-  skos:prefLabel "campagne"@fr;
-  rico:name "campagne"@fr;
-  skos:inScheme vocabulaire:ac;
-  skos:topConceptOf vocabulaire:ac .
-
-type:acdep a rico:ActivityType, skos:Concept;
-  skos:notation "acdep";
-  skos:prefLabel "dépouillement"@fr;
-  rico:name "dépouillement"@fr;
-  skos:inScheme vocabulaire:ac;
-  skos:topConceptOf vocabulaire:ac .
-
-type:acsai a rico:ActivityType, skos:Concept;
-  skos:notation "acsai";
-  skos:prefLabel "saisie"@fr;
-  rico:name "saisie"@fr;
-  skos:inScheme vocabulaire:ac;
-  skos:topConceptOf vocabulaire:ac .
-
-type:acrel a rico:ActivityType, skos:Concept;
-  skos:notation "acrel";
-  skos:prefLabel "relecture"@fr;
-  rico:name "relecture"@fr;
-  skos:inScheme vocabulaire:ac;
-  skos:topConceptOf vocabulaire:ac .
-
-type:accor a rico:ActivityType, skos:Concept;
-  skos:notation "accor";
-  skos:prefLabel "correction / validation"@fr;
-  rico:name "correction / validation"@fr;
-  skos:inScheme vocabulaire:ac;
-  skos:topConceptOf vocabulaire:ac .
-
-vocabulaire:su a skos:ConceptScheme;
-  skos:notation "su";
-  dct:coverage rico:Instantiation;
-  dct:isRequiredBy rico:hasCarrierType;
-  skos:prefLabel "Type de support"@fr;
-  skos:hasTopConcept type:susac, type:sulia .
-
-type:susac a rico:CarrierType, skos:Concept;
-  skos:notation "susac";
-  skos:prefLabel "sac"@fr;
-  rico:name "sac"@fr;
-  skos:inScheme vocabulaire:su;
-  skos:topConceptOf vocabulaire:su .
-
-type:sulia a rico:CarrierType, skos:Concept;
-  skos:notation "sulia";
-  skos:prefLabel "liasse"@fr;
-  rico:name "liasse"@fr;
-  skos:inScheme vocabulaire:su;
-  skos:topConceptOf vocabulaire:su .
+<https://data.archives.haute-garonne.fr/modeles/sacsaproces> a owl:Ontology;
+  dct:title "Documentation of AD31 Pending cases model";
+  dct:abstract """(_english_) This page documents the structure of the Collections data published by AD31
+-----
+(_français_) Cette page documente la structure des données de Collections publiées par les AD31""";
+  dcat:distribution _:fb545ffd6b5a4fd788926ac74aad9ca023391 .
+
+_:fb545ffd6b5a4fd788926ac74aad9ca023391 dct:format <https://www.iana.org/assignments/media-types/text/turtle>;
+  dcat:downloadURL <http://shapes.performing-arts.ch/collections/sapa-collections.ttl> .
+
+sacs:Identifiant a sh:NodeShape;
+  volipi:iconName "fa-solid fa-laptop-code";
+  sh:targetClass rico:Identifier;
+  rdfs:label "Identifiant"@fr;
+  skos:definition "Ici les identifiants utilisés dans le modèle. Les cotes sont les identifiants uniques des sacs. Chaque identifiant correspond à un seul sac. Un sac peut avoir plusieurs identifiants (de types différents). Les lieux peuvent avoir un code INSEE."@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https:\\/\\/data.archives.haute-garonne.fr\\/((instanciation)|(lieu)|(archive))\\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}#((cote)|(insee)|(ark)|(castan[1234]))";
+  foaf:depiction sacs:Diagram_Instantiation;
+  sh:closed "true"^^xsd:boolean;
+  sh:ignoredProperties _:fb545ffd6b5a4fd788926ac74aad9ca023392;
+  shacl-play:background-color "ffffff";
+  sh:property sacs:Identifiant_name, sacs:Identifiant_hasIdentifierType;
+  sh:sparql sacs:BusinessRule_1 .
+
+_:fb545ffd6b5a4fd788926ac74aad9ca023392 rdf:first rdf:type;
+  rdf:rest rdf:nil .
+
+sacs:Date a sh:NodeShape;
+  volipi:iconName "fa-solid fa-calendar";
+  sh:targetClass rico:Date;
+  rdfs:label "Date"@fr;
+  skos:definition "Information chronologique liée à la procédure"@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/evenement/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}#date-[debut|fin]";
+  foaf:depiction sacs:Diagram_Activity_Procedure;
+  sh:closed "true"^^xsd:boolean;
+  sh:ignoredProperties _:fb545ffd6b5a4fd788926ac74aad9ca023393;
+  shacl-play:background-color "ded9c3";
+  sh:property sacs:Date_normalizedDateValue, sacs:Date_expressedDate .
+
+_:fb545ffd6b5a4fd788926ac74aad9ca023393 rdf:first rdf:type;
+  rdf:rest rdf:nil .
+
+sacs:Notice a sh:NodeShape;
+  volipi:iconName "fa-solid fa-file-text";
+  sh:targetClass rico:RecordSet;
+  rdfs:label "Notice"@fr;
+  skos:definition "Contenu intellectuel des documents présents dans le sac"@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/archive/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}";
+  foaf:depiction sacs:Diagram_Instantiation;
+  sh:closed "true"^^xsd:boolean;
+  sh:ignoredProperties _:fb545ffd6b5a4fd788926ac74aad9ca023394;
+  shacl-play:background-color "dbeef4";
+  sh:property sacs:Notice_name, sacs:Notice_generalDescription, sacs:Notice_recordResourceExtent,
+    sacs:Notice_hasOrHadInstantiation, sacs:Notice_documents, sacs:Notice_hasOrHadIdentifier .
+
+_:fb545ffd6b5a4fd788926ac74aad9ca023394 rdf:first rdf:type;
+  rdf:rest rdf:nil .
+
+sacs:Fait a sh:NodeShape;
+  volipi:iconName "fa-solid fa-circle-question";
+  sh:targetClass rico:Event;
+  rdfs:label "Fait"@fr;
+  skos:definition "Objet de la procédure."@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/evenement/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}";
+  foaf:depiction sacs:Diagram_Event_Place;
+  sh:closed "true"^^xsd:boolean;
+  sh:ignoredProperties _:fb545ffd6b5a4fd788926ac74aad9ca023395;
+  shacl-play:background-color "fffa9f";
+  sh:property sacs:Fait_name, sacs:Fait_hasEventType, sacs:Fait_hasOrHadLocation .
+
+_:fb545ffd6b5a4fd788926ac74aad9ca023395 rdf:first rdf:type;
+  rdf:rest rdf:nil .
+
+sacs:Instruction a sh:NodeShape;
+  volipi:iconName "fa-solid fa-gavel";
+  sh:target sacs:Instruction-target;
+  rdfs:label "Instruction"@fr;
+  skos:definition "Ensemble d’actions menées par une juridiction pour mettre une affaire en état d’être jugée."@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/evenement/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}";
+  foaf:depiction sacs:Diagram_Activity_Procedure;
+  sh:closed "true"^^xsd:boolean;
+  sh:ignoredProperties _:fb545ffd6b5a4fd788926ac74aad9ca023396;
+  shacl-play:background-color "fffa9f";
+  sh:property sacs:Instruction_name, sacs:Instruction_hasActivityType_ActivityType,
+    sacs:Instruction_hasActivityType_OrdreActivite, sacs:Instruction_followsInTime, sacs:Instruction_precedesInTime,
+    sacs:Instruction_isOrWasPerformedBy .
+
+sacs:Instruction-target sh:select """PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
+PREFIX type: <https://data.archives.haute-garonne.fr/type/>
+SELECT $this
+WHERE {
+ $this a rico:Activity .
+ $this rico:hasActivityType type:acins .
+}""" .
+
+_:fb545ffd6b5a4fd788926ac74aad9ca023396 rdf:first rdf:type;
+  rdf:rest rdf:nil .
+
+sacs:Juridiction a sh:NodeShape;
+  volipi:iconName "fa-solid fa-landmark";
+  sh:target sacs:Juridiction-target;
+  rdfs:label "Juridiction"@fr;
+  skos:definition "Institution judiciaire ayant instruit la procédure."@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/agent/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}";
+  foaf:depiction sacs:Diagram_Activity_Procedure;
+  sh:closed "true"^^xsd:boolean;
+  sh:ignoredProperties _:fb545ffd6b5a4fd788926ac74aad9ca023397;
+  shacl-play:background-color "c7d8f1";
+  sh:property sacs:Juridiction_name, sacs:Juridiction_hasOrHadLegalStatus, sacs:Juridiction_agentHasOrHadLocation,
+    sacs:Juridiction_hasOrHadCorporateBodyType .
+
+sacs:Juridiction-target sh:select """PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
+PREFIX type: <https://data.archives.haute-garonne.fr/type/>
+SELECT $this
+WHERE {
+ $this a rico:CorporateBody .
+ $this rico:hasOrHadCorporateBodyType type:cljur .
+}""" .
+
+_:fb545ffd6b5a4fd788926ac74aad9ca023397 rdf:first rdf:type;
+  rdf:rest rdf:nil .
+
+sacs:Liasse a sh:NodeShape;
+  volipi:iconName "fa-solid fa-box-archive";
+  sh:target sacs:Liasse-target;
+  rdfs:label "Liasse"@fr;
+  skos:definition "Ensemble matériel de sacs, ficelés ensemble probablement au XIXe siècle dans le cadre d’une action archivistique de nature pour l’instant inconnue."@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/instanciation/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}";
+  foaf:depiction sacs:Diagram_Instantiation;
+  sh:closed "true"^^xsd:boolean;
+  sh:ignoredProperties _:fb545ffd6b5a4fd788926ac74aad9ca023398;
+  shacl-play:background-color "f5deb4";
+  sh:property sacs:Liasse_hasCarrierType, sacs:Liasse_title, sacs:Liasse_hadComponent,
+    sacs:Liasse_physicalCharacteristicsNote .
+
+sacs:Liasse-target sh:select """PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
+PREFIX type: <https://data.archives.haute-garonne.fr/type/>
+SELECT $this
+WHERE {
+ $this a rico:Instantiation .
+ $this rico:hasCarrierType type:sulia .
+}""" .
+
+_:fb545ffd6b5a4fd788926ac74aad9ca023398 rdf:first rdf:type;
+  rdf:rest rdf:nil .
+
+sacs:Lieu a sh:NodeShape;
+  volipi:iconName "fa-solid fa-location-dot";
+  sh:targetClass rico:Place;
+  rdfs:label "Lieu"@fr;
+  skos:definition "Entité géographique permettant de contextualiser des faits, une juridiction, ou une partie."@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/lieu/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}";
+  foaf:depiction sacs:Diagram_Event_Place;
+  sh:closed "true"^^xsd:boolean;
+  sh:ignoredProperties _:fb545ffd6b5a4fd788926ac74aad9ca023399;
+  shacl-play:background-color "f99f9f";
+  sh:property sacs:Lieu_name, sacs:Lieu_hasOrHadPlaceType, sacs:Lieu_isDirectlyContainedBy,
+    sacs:Lieu_directlyContains, sacs:Lieu_hasOrHadIdentifier, sacs:Lieu_geographicalCoordinates .
+
+_:fb545ffd6b5a4fd788926ac74aad9ca023399 rdf:first rdf:type;
+  rdf:rest rdf:nil .
+
+sacs:Procedure a sh:NodeShape;
+  volipi:iconName "fa-solid fa-book";
+  sh:target sacs:Procedure-target;
+  rdfs:label "Procédure"@fr;
+  skos:definition "Procédure judiciaire à l’origine des documents. Cœur de la description"@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/evenement/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}";
+  foaf:depiction sacs:Diagram_Activity_Procedure;
+  sh:closed "true"^^xsd:boolean;
+  sh:ignoredProperties _:fb545ffd6b5a4fd788926ac74aad9ca023400;
+  shacl-play:background-color "fef9a0";
+  sh:property sacs:Procedure_hasActivityType_ActivityType, sacs:Procedure_hasActivityType_ProcedureType,
+    sacs:Procedure_name, sacs:Procedure_resultsOrResultedFrom, sacs:Procedure_hasOrHadSubevent,
+    sacs:Procedure_isAssociatedWithEvent, sacs:Procedure_hasOrHadParticipant, sacs:Procedure_hasBeginningDate,
+    sacs:Procedure_hasEndDate .
+
+sacs:Procedure-target sh:select """PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
+PREFIX type: <https://data.archives.haute-garonne.fr/type/>
+SELECT $this
+WHERE {
+ $this a rico:Activity .
+ $this rico:hasActivityType type:acpro .
+}""" .
+
+_:fb545ffd6b5a4fd788926ac74aad9ca023400 rdf:first rdf:type;
+  rdf:rest rdf:nil .
+
+sacs:Sac a sh:NodeShape;
+  volipi:iconName "fa-solid fa-suitcase";
+  sh:target sacs:Sac-target;
+  rdfs:label "Sac"@fr;
+  skos:definition "Aspect matériel de l’ensemble documentaire."@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/instanciation/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}";
+  foaf:depiction sacs:Diagram_Instantiation;
+  sh:closed "true"^^xsd:boolean;
+  sh:ignoredProperties _:fb545ffd6b5a4fd788926ac74aad9ca023401;
+  shacl-play:background-color "f4ddb4";
+  sh:property sacs:Sac_name, sacs:Sac_hasCarrierType, sacs:Sac_structure, sacs:Sac_hasOrHadIdentifier,
+    sacs:Sac_wasComponentOf, sacs:Sac_isOrWasInstantiationOf, sacs:Sac_hasOrganicProvenance,
+    sacs:Sac_documents .
+
+sacs:Sac-target sh:select """PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
+PREFIX type: <https://data.archives.haute-garonne.fr/type/>
+SELECT $this
+WHERE {
+ $this a rico:Instantiation .
+ $this rico:hasCarrierType type:susac .
+}""" .
+
+_:fb545ffd6b5a4fd788926ac74aad9ca023401 rdf:first rdf:type;
+  rdf:rest rdf:nil .
+
+sacs:PersonneMorale a sh:NodeShape;
+  volipi:iconName "fa-solid fa-building";
+  sh:target sacs:PersonneMorale-target;
+  rdfs:label "Partie – personne morale"@fr;
+  skos:definition "Personne morale partie du procès (défendeur ou demandeur)"@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/agent/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}";
+  foaf:depiction sacs:Diagram_Activity_Procedure;
+  shacl-play:background-color "c3d3eb";
+  sh:property sacs:PersonneMorale_name, sacs:PersonneMorale_hasOrHadCorporateBodyType,
+    sacs:PersonneMorale_agentHasOrHadLocation .
+
+sacs:PersonneMorale-target sh:select """PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
+PREFIX type: <https://data.archives.haute-garonne.fr/type/>
+SELECT $this
+WHERE {
+ $this a rico:CorporateBody .
+ FILTER NOT EXISTS { $this rico:hasOrHadCorporateBodyType type:cljur . }
+}""" .
+
+sacs:PersonnePhysique a sh:NodeShape;
+  volipi:iconName "fa-solid fa-male";
+  sh:targetClass rico:Person;
+  rdfs:label "Partie – personne physique"@fr;
+  skos:definition "Individu partie du procès (défendeur ou demandeur)"@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/agent/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}";
+  foaf:depiction sacs:Diagram_Activity_Procedure;
+  sh:closed "true"^^xsd:boolean;
+  sh:ignoredProperties _:fb545ffd6b5a4fd788926ac74aad9ca023402;
+  shacl-play:background-color "e5dfeb";
+  sh:property sacs:PersonnePhysique_name, sacs:PersonnePhysique_hasOrHadOccupationOfType,
+    sacs:PersonnePhysique_hasOrHadDemographicGroup .
+
+_:fb545ffd6b5a4fd788926ac74aad9ca023402 rdf:first rdf:type;
+  rdf:rest rdf:nil .
+
+sacs:LegalStatus a sh:NodeShape;
+  volipi:iconName "fa-solid fa-list-ul";
+  sh:targetClass rico:LegalStatus;
+  rdfs:label "Type de juridiction"@fr;
+  skos:definition "Vocabulaire contrôlé permettant de catégoriser les différents niveaux de juridiction."@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/type/ju[a-z]{3}$";
+  shacl-play:background-color "ffffff";
+  sh:property sacs:LegalStatus_inScheme, sacs:LegalStatus_prefLabel .
+
+sacs:IdentifierType a sh:NodeShape;
+  volipi:iconName "fa-solid fa-list-ul";
+  sh:targetClass rico:IdentifierType;
+  rdfs:label "Type d'identifiant"@fr;
+  skos:definition "Vocabulaire contrôlé qualifiant un identifiant"@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/type/id[a-z]{3}$";
+  shacl-play:background-color "ffffff";
+  sh:property sacs:IdentifierType_inScheme, sacs:IdentifierType_prefLabel .
+
+sacs:PlaceType a sh:NodeShape;
+  volipi:iconName "fa-solid fa-list-ul";
+  sh:targetClass rico:PlaceType;
+  rdfs:label "Type de lieu"@fr;
+  skos:definition "Vocabulaire contrôlé qualifiant les lieux"@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/type/li[a-z]{3}$";
+  shacl-play:background-color "ffffff";
+  sh:property sacs:PlaceType_inScheme, sacs:PlaceType_prefLabel .
+
+sacs:EventType a sh:NodeShape;
+  volipi:iconName "fa-solid fa-list-ul";
+  sh:targetClass rico:EventType;
+  rdfs:label "Qualification des faits"@fr;
+  skos:definition "Qualification les faits à l’origine de la procédure."@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/type/fa[a-z]{3}$";
+  shacl-play:background-color "ffffff";
+  sh:property sacs:EventType_inScheme, sacs:EventType_prefLabel .
+
+sacs:OccupationType a sh:NodeShape;
+  volipi:iconName "fa-solid fa-list-ul";
+  sh:targetClass rico:OccupationType;
+  rdfs:label "Type de profession"@fr;
+  skos:definition "Vocabulaire contrôlé permettant de catégoriser les professions exercées par des personnes physiques."@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/type/pr[a-z]{3}$";
+  shacl-play:background-color "ffffff";
+  sh:property sacs:OccupationType_inScheme, sacs:OccupationType_prefLabel .
+
+sacs:ActivityType a sh:NodeShape;
+  volipi:iconName "fa-solid fa-list-ul";
+  sh:targetClass rico:ActivityType;
+  rdfs:label "Type d'activité"@fr;
+  skos:definition "Vocabulaire contrôlé qualifiant un type d'activité"@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/type/ac[a-z]{3}$";
+  shacl-play:background-color "ffffff";
+  sh:property sacs:ActivityType_inScheme, sacs:ActivityType_prefLabel .
+
+sacs:CarrierType a sh:NodeShape;
+  volipi:iconName "fa-solid fa-list-ul";
+  sh:targetClass rico:CarrierType;
+  rdfs:label "Type d'instantiation"@fr;
+  skos:definition "Vocabulaire contrôlé qualifiant un type de support"@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/type/su[a-z]{3}$";
+  shacl-play:background-color "ffffff";
+  sh:property sacs:CarrierType_inScheme, sacs:CarrierType_prefLabel .
+
+sacs:DemographicGroup a sh:NodeShape;
+  volipi:iconName "fa-solid fa-list-ul";
+  sh:targetClass rico:DemographicGroup;
+  rdfs:label "Sexe"@fr;
+  skos:definition "Vocabulaire contrôlé qualifiant le genre de la personne physique"@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/type/sx[a-z]{3}$";
+  shacl-play:background-color "ffffff";
+  sh:property sacs:DemographicGroup_inScheme, sacs:DemographicGroup_prefLabel .
+
+sacs:CorporateBodyType a sh:NodeShape;
+  volipi:iconName "fa-solid fa-list-ul";
+  sh:targetClass rico:CorporateBodyType;
+  rdfs:label "Type de collectivité"@fr;
+  skos:definition "Vocabulaire contrôlé qualifiant un type de collectivité"@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/type/cl[a-z]{3}$";
+  shacl-play:background-color "ffffff";
+  sh:property sacs:CorporateBodyType_inScheme, sacs:CorporateBodyType_prefLabel .
+
+sacs:TypeProcedure a sh:NodeShape;
+  volipi:iconName "fa-solid fa-list-ul";
+  sh:targetClass ad31-onto:TypeProcedure;
+  rdfs:label "Type de procédure"@fr;
+  skos:definition "Vocabulaire contrôlé qualifiant un type de procédure"@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/type/pc[a-z]{3}$";
+  shacl-play:background-color "ffffff";
+  sh:property sacs:TypeProcedure_inScheme, sacs:TypeProcedure_prefLabel .
+
+sacs:OrdreInstruction a sh:NodeShape;
+  volipi:iconName "fa-solid fa-list-ul";
+  sh:targetClass ad31-onto:OrdreInstruction;
+  rdfs:label "Ordre"@fr;
+  skos:definition "Vocabulaire contrôlé qualifiant l'ordre de l'instruction (première, deuxième, troisième)"@fr;
+  sh:nodeKind sh:IRI;
+  sh:pattern "^https://data.archives.haute-garonne.fr/type/oi[a-z]{3}$";
+  shacl-play:background-color "ffffff";
+  sh:property sacs:OrdreInstruction_inScheme, sacs:OrdreInstruction_prefLabel .
+
+sacs:Libelle a sh:NodeShape;
+  volipi:iconName "fa-solid fa-quote-left";
+  rdfs:label "Libellé"@fr;
+  sh:nodeKind sh:Literal .
+
+sacs:Text a sh:NodeShape;
+  volipi:iconName "fa-solid fa-font";
+  rdfs:label "Texte"@fr;
+  sh:nodeKind sh:Literal .
+
+sacs:Number a sh:NodeShape;
+  volipi:iconName "fa-solid fa-1";
+  rdfs:label "Quantité"@fr;
+  sh:nodeKind sh:Literal .
+
+sacs:DateLiteral a sh:NodeShape;
+  volipi:iconName "fa-solid fa-calendar";
+  rdfs:label "Date"@fr;
+  sh:nodeKind sh:Literal .
+
+sacs:Order a sh:NodeShape;
+  volipi:iconName "fa-solid fa-1";
+  rdfs:label "Ordre"@fr;
+  sh:nodeKind sh:Literal .
+
+sacs:Coordinates a sh:NodeShape;
+  volipi:iconName "fa-solid fa-map-location";
+  rdfs:label "Coordonnées"@fr;
+  sh:nodeKind sh:Literal .
+
+sacs:Identifiant_name sh:path rico:name;
+  sh:name "valeur"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole;
+  dash:searchWidget core:SearchProperty .
+
+sacs:Identifiant_hasIdentifierType sh:path rico:hasIdentifierType;
+  sh:name "a pour type d'identifiant"@fr;
+  sh:description "Chaque identifiant appartient à un type particulier"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:class rico:IdentifierType;
+  dash:searchWidget core:ListProperty .
+
+sacs:Date_normalizedDateValue sh:path rico:normalizedDateValue;
+  sh:name "valeur de date normalisée"@fr;
+  sh:description "Format de date basé sur une norme technique publique."@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:gYear;
+  sh:node sacs:DateLiteral;
+  dash:searchWidget core:TimeProperty-Year .
+
+sacs:Date_expressedDate sh:path rico:expressedDate;
+  sh:name "a pour date d'impression"@fr;
+  sh:description "Date en langage naturel"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node sacs:Text;
+  dash:propertyRole dash:LabelRole;
+  dash:searchWidget core:SearchProperty .
+
+sacs:Notice_name sh:path rico:name;
+  sh:name "libellé d'affichage"@fr;
+  sh:description "Contient la valeur \"Notice {cote}\" (exemple \"Notice 2 B 15815\")"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole .
+
+sacs:Notice_generalDescription sh:path rico:generalDescription;
+  sh:name "présentation du contenu"@fr;
+  sh:description "Informations sur le contenu intellectuel du sac. Il peut s’agir de détails sur la procédure ou de mentions de certains documents."@fr;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node sacs:Text;
+  dash:searchWidget core:SearchProperty .
+
+sacs:Notice_recordResourceExtent sh:path rico:recordResourceExtent;
+  sh:name "nombre de pièces"@fr;
+  sh:description "Nombre de pièces comprises dans le sac"@fr;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:integer;
+  sh:node sacs:Number;
+  dash:searchWidget core:SearchProperty .
+
+sacs:Notice_hasOrHadInstantiation sh:path rico:hasOrHadInstantiation;
+  sh:name "a pour instanciation"@fr;
+  sh:description "Les documents sont matérialisés par un sac"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:node sacs:Sac;
+  dash:searchWidget core:SearchProperty .
+
+sacs:Notice_documents sh:path rico:documents;
+  sh:name "documente"@fr;
+  sh:description "Les documents documentent une procédure"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:node sacs:Procedure;
+  dash:searchWidget core:SearchProperty .
+
+sacs:Notice_hasOrHadIdentifier sh:path rico:hasOrHadIdentifier;
+  sh:name "a pour ID"@fr;
+  sh:description "Identifiant ARK de la notice"@fr;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:class rico:Identifier;
+  dash:searchWidget core:NonSelectableProperty .
+
+sacs:Fait_name sh:path rico:name;
+  sh:name "libellé d'affichage"@fr;
+  sh:description "Contient la valeur \"Fait de la procédure \"{intitulé de la procédure}\" \""@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole;
+  dash:searchWidget core:SearchProperty .
+
+sacs:Fait_hasEventType sh:path rico:hasEventType;
+  sh:name "ont pour type de faits"@fr;
+  sh:description "Les faits ont une ou plusieurs qualifications"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:class rico:EventType;
+  dash:searchWidget core:ListProperty .
+
+sacs:Fait_hasOrHadLocation sh:path rico:hasOrHadLocation;
+  sh:name "ont eu pour localisation"@fr;
+  sh:description "Les faits se sont déroulés dans un contexte géographique"@fr;
+  sh:minCount "0"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:class rico:Place;
+  dash:searchWidget core:AutocompleteProperty .
+
+sacs:Instruction_name sh:path rico:name;
+  sh:name "libellé d'affichage"@fr;
+  sh:description "Contient la valeur \"Première instruction de \"{intitulé de la procédure}\" \" ou \"Deuxième instruction de ...\" ou \"Troisième instruction de ...\""@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole;
+  dash:searchWidget core:SearchProperty .
+
+sacs:Instruction_hasActivityType_ActivityType sh:path rico:hasActivityType;
+  sh:name "a pour type d'activité"@fr;
+  sh:description "Vocabulaire type d'activité"@fr;
+  sh:nodeKind sh:IRI;
+  sh:qualifiedValueShape _:fb545ffd6b5a4fd788926ac74aad9ca023403;
+  sh:qualifiedMinCount "1"^^xsd:integer;
+  sh:qualifiedMaxCount "1"^^xsd:integer .
+
+_:fb545ffd6b5a4fd788926ac74aad9ca023403 sh:class rico:ActivityType;
+  sh:hasValue type:acins .
+
+sacs:Instruction_hasActivityType_OrdreActivite sh:path rico:hasActivityType;
+  sh:name "a pour ordre"@fr;
+  sh:description "Ordre de l'instruction (première, deuxième, troisième)"@fr;
+  sh:nodeKind sh:IRI;
+  dash:searchWidget core:ListProperty;
+  sh:qualifiedValueShape _:fb545ffd6b5a4fd788926ac74aad9ca023404;
+  sh:qualifiedMinCount "1"^^xsd:integer;
+  sh:qualifiedMaxCount "1"^^xsd:integer .
+
+_:fb545ffd6b5a4fd788926ac74aad9ca023404 sh:class ad31-onto:OrdreInstruction .
+
+sacs:Instruction_followsInTime sh:path rico:followsInTime;
+  sh:name "a suivi dans le temps"@fr;
+  sh:description "Une instruction intervient après une autre instruction"@fr;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:node sacs:Instruction;
+  dash:searchWidget core:NonSelectableProperty .
+
+sacs:Instruction_precedesInTime sh:path rico:precedesInTime;
+  sh:name "a précédé dans le temps"@fr;
+  sh:description "Une instruction intervient avant une autre instruction"@fr;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:node sacs:Instruction;
+  dash:searchWidget core:NonSelectableProperty .
+
+sacs:Instruction_isOrWasPerformedBy sh:path rico:isOrWasPerformedBy;
+  sh:name "a été menée par"@fr;
+  sh:description "Une instruction est menée par une juridiction"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:node sacs:Juridiction;
+  dash:searchWidget core:AutocompleteProperty .
+
+sacs:Juridiction_name sh:path rico:name;
+  sh:name "nom"@fr;
+  sh:description "Juridiction 1/2/3"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole;
+  dash:searchWidget core:SearchProperty .
+
+sacs:Juridiction_hasOrHadLegalStatus sh:path rico:hasOrHadLegalStatus;
+  sh:name "avait pour type de juridiction"@fr;
+  sh:description "Une juridiction a un type de juridiction"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:class rico:LegalStatus;
+  dash:searchWidget core:ListProperty .
+
+sacs:Juridiction_agentHasOrHadLocation sh:path rico:agentHasOrHadLocation;
+  sh:name "avait pour localisation"@fr;
+  sh:description "Une juridiction siège à un endroit donné. Dans des cas exceptionnel, une juridiction peut avoir 2 sièges indiqués."@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:class rico:Place;
+  dash:searchWidget core:AutocompleteProperty .
+
+sacs:Juridiction_hasOrHadCorporateBodyType sh:path rico:hasOrHadCorporateBodyType;
+  sh:name "a pour type de collectivité"@fr;
+  sh:description "Vocabulaire type de collectivité"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:class rico:CorporateBodyType;
+  sh:hasValue type:cljur;
+  dash:searchWidget core:ListProperty .
+
+sacs:Liasse_hasCarrierType sh:path rico:hasCarrierType;
+  sh:name "a pour type de support"@fr;
+  sh:description "Vocabulaire type de support"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:class rico:CarrierType;
+  sh:hasValue type:sulia .
+
+sacs:Liasse_title sh:path rico:title;
+  sh:name "intitulé"@fr;
+  sh:description "Informations se trouvant sur le papillon qui accompagne parfois les paquets liés avec une corde"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole;
+  dash:searchWidget core:SearchProperty .
+
+sacs:Liasse_hadComponent sh:path rico:hadComponent;
+  sh:name "a eu pour composant"@fr;
+  sh:description "Chaque liasse comportait au moins 2 sacs"@fr;
+  sh:minCount "2"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:node sacs:Sac;
+  dash:searchWidget core:AutocompleteProperty .
+
+sacs:Liasse_physicalCharacteristicsNote sh:path rico:physicalCharacteristicsNote;
+  sh:name "état des documents"@fr;
+  sh:description "État de conservation des documents"@fr;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node sacs:Text;
+  dash:searchWidget core:SearchProperty .
+
+sacs:Lieu_name sh:path rico:name;
+  sh:name "nom"@fr;
+  sh:description "Nom du lieu"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole;
+  dash:searchWidget core:SearchProperty .
+
+sacs:Lieu_hasOrHadPlaceType sh:path rico:hasOrHadPlaceType;
+  sh:name "a pour type de lieu"@fr;
+  sh:description "Un lieu est catégorisé par un type de lieu"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:class rico:PlaceType;
+  dash:searchWidget core:ListProperty .
+
+sacs:Lieu_isDirectlyContainedBy sh:path rico:isDirectlyContainedBy;
+  sh:name "est directement contenu par"@fr;
+  sh:description "Un lieu est compris dans un autre lieu"@fr;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:class rico:Place;
+  dash:searchWidget core:AutocompleteProperty .
+
+sacs:Lieu_directlyContains sh:path rico:directlyContains;
+  sh:name "contient directement"@fr;
+  sh:description "Un lieu comprend un autre lieu"@fr;
+  sh:nodeKind sh:IRI;
+  sh:class rico:Place;
+  dash:searchWidget core:AutocompleteProperty .
+
+sacs:Lieu_hasOrHadIdentifier sh:path rico:hasOrHadIdentifier;
+  sh:name "a pour code INSEE"@fr;
+  sh:description "Un lieu peut avoir un code INSEE"@fr;
+  sh:minCount "0"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:class rico:Identifier;
+  dash:searchWidget core:NonSelectableProperty .
+
+sacs:Lieu_geographicalCoordinates sh:path rico:geographicalCoordinates;
+  sh:name "a pour coordonnées géographiques"@fr;
+  sh:description "Un lieu peut avoir des coordonnées géographiques"@fr;
+  sh:minCount "0"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype geosparql:wktLiteral;
+  sh:node sacs:Coordinates;
+  dash:searchWidget core:MapProperty .
+
+sacs:Procedure_hasActivityType_ActivityType sh:path rico:hasActivityType;
+  sh:name "a pour type d'activité"@fr;
+  sh:description "Vocabulaire type d'activité"@fr;
+  sh:nodeKind sh:IRI;
+  sh:qualifiedValueShape _:fb545ffd6b5a4fd788926ac74aad9ca023405;
+  sh:qualifiedMinCount "1"^^xsd:integer;
+  sh:qualifiedMaxCount "1"^^xsd:integer .
+
+_:fb545ffd6b5a4fd788926ac74aad9ca023405 sh:class rico:ActivityType;
+  sh:hasValue type:acpro .
+
+sacs:Procedure_hasActivityType_ProcedureType sh:path rico:hasActivityType;
+  sh:name "a pour type de procédure"@fr;
+  sh:description "Vocabulaire type de procédure"@fr;
+  sh:nodeKind sh:IRI;
+  dash:searchWidget core:ListProperty;
+  sh:qualifiedValueShape _:fb545ffd6b5a4fd788926ac74aad9ca023406;
+  sh:qualifiedMaxCount "2"^^xsd:integer .
+
+_:fb545ffd6b5a4fd788926ac74aad9ca023406 sh:class ad31-onto:TypeProcedure .
+
+sacs:Procedure_name sh:path rico:name;
+  sh:name "intitulé"@fr;
+  sh:description "Description succincte de la procédure"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole;
+  dash:searchWidget core:SearchProperty .
+
+sacs:Procedure_resultsOrResultedFrom sh:path rico:resultsOrResultedFrom;
+  sh:name "a résulté de"@fr;
+  sh:description "Une procédure est ouverte suite à des faits"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:class rico:Event;
+  dash:searchWidget core:NonSelectableProperty .
+
+sacs:Procedure_hasOrHadSubevent sh:path rico:hasOrHadSubevent;
+  sh:name "a eu pour instruction"@fr;
+  sh:description "Une procédure est un ensemble d’instructions. Les instructions ne sont pas toujours connues, et il peut y avoir jusqu'à 3 instructions maximum par procédure."@fr;
+  sh:maxCount "3"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:node sacs:Instruction;
+  dash:searchWidget core:NonSelectableProperty .
+
+sacs:Procedure_isAssociatedWithEvent sh:path rico:isAssociatedWithEvent;
+  sh:name "était liée à la procédure"@fr;
+  sh:description "Une procédure peut être liée à une autre procédure"@fr;
+  sh:nodeKind sh:IRI;
+  sh:node sacs:Procedure;
+  dash:searchWidget core:AutocompleteProperty .
+
+sacs:Procedure_hasOrHadParticipant sh:path rico:hasOrHadParticipant;
+  sh:name "a impliqué"@fr;
+  sh:description "Une procédure implique des parties"@fr;
+  sh:nodeKind sh:IRI;
+  sh:or _:fb545ffd6b5a4fd788926ac74aad9ca023409;
+  dash:searchWidget core:AutocompleteProperty .
+
+_:fb545ffd6b5a4fd788926ac74aad9ca023407 sh:node sacs:PersonnePhysique .
+
+_:fb545ffd6b5a4fd788926ac74aad9ca023408 sh:node sacs:PersonneMorale .
+
+_:fb545ffd6b5a4fd788926ac74aad9ca023409 a rdf:List;
+  rdf:first _:fb545ffd6b5a4fd788926ac74aad9ca023407;
+  rdf:rest _:fb545ffd6b5a4fd788926ac74aad9ca023410 .
+
+_:fb545ffd6b5a4fd788926ac74aad9ca023410 rdf:first _:fb545ffd6b5a4fd788926ac74aad9ca023408;
+  rdf:rest rdf:nil .
+
+rico:hasOrHadParticipant owl:inverseOf rico:isOrWasParticipantIn .
+
+rico:isOrWasParticipantIn rdfs:label "était participant dans"@fr .
+
+sacs:Procedure_hasBeginningDate sh:path rico:hasBeginningDate;
+  sh:name "date de début"@fr;
+  sh:description "Date de début de la procédure"@fr;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:class rico:Date;
+  dash:searchWidget core:NonSelectableProperty .
+
+sacs:Procedure_hasEndDate sh:path rico:hasEndDate;
+  sh:name "date de fin"@fr;
+  sh:description "Date fin de la procédure"@fr;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:class rico:Date;
+  dash:searchWidget core:NonSelectableProperty .
+
+sacs:Sac_name sh:path rico:name;
+  sh:name "libellé d'affichage"@fr;
+  sh:description "Contient la valeur \"Sac {cote}\" (exemple \"Sac 2 B 15815\")"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole;
+  dash:searchWidget core:SearchProperty .
+
+sacs:Sac_hasCarrierType sh:path rico:hasCarrierType;
+  sh:name "a pour type de support"@fr;
+  sh:description "Vocabulaire type de support"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:class rico:CarrierType;
+  sh:hasValue type:susac .
+
+sacs:Sac_structure sh:path rico:structure;
+  sh:name "autres informations descriptives"@fr;
+  sh:description "Caractéristiques matérielles du sac"@fr;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node sacs:Text;
+  dash:searchWidget core:SearchProperty .
+
+sacs:Sac_hasOrHadIdentifier sh:path rico:hasOrHadIdentifier;
+  sh:name "a pour cote"@fr;
+  sh:description "Chaque sac a un, voire plusieurs identifiants uniques"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:class rico:Identifier;
+  dash:searchWidget core:NonSelectableProperty .
+
+sacs:Sac_wasComponentOf sh:path rico:wasComponentOf;
+  sh:name "a été le composant de"@fr;
+  sh:description "Les sacs peuvent être issus d’une liasse"@fr;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:node sacs:Liasse;
+  dash:searchWidget core:AutocompleteProperty .
+
+sacs:Sac_isOrWasInstantiationOf sh:path rico:isOrWasInstantiationOf;
+  sh:name "est une instanciation de"@fr;
+  sh:description "Les sacs sont le support d’un contenu informationnel"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:class rico:RecordSet;
+  dash:searchWidget core:SearchProperty .
+
+sacs:Sac_hasOrganicProvenance sh:path rico:hasOrganicProvenance;
+  sh:name "a été produit par"@fr;
+  sh:description "Les sacs ont été produits par une ou plusieurs juridictions"@fr;
+  sh:nodeKind sh:IRI;
+  sh:node sacs:Juridiction;
+  dash:searchWidget core:AutocompleteProperty .
+
+sacs:Sac_documents sh:path rico:documents;
+  sh:name "documente"@fr;
+  sh:description "Les documents documentent une procédure"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:node sacs:Procedure;
+  dash:searchWidget core:AutocompleteProperty .
+
+sacs:PersonneMorale_name sh:path rico:name;
+  sh:name "nom"@fr;
+  sh:description "Nom de la personne morale"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole;
+  dash:searchWidget core:SearchProperty .
+
+sacs:PersonneMorale_hasOrHadCorporateBodyType sh:path rico:hasOrHadCorporateBodyType;
+  sh:name "avait pour type de collectivité"@fr;
+  sh:description "Vocabulaire type de collectivité"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:class rico:CorporateBodyType;
+  dash:searchWidget core:ListProperty .
+
+sacs:PersonneMorale_agentHasOrHadLocation sh:path rico:agentHasOrHadLocation;
+  sh:name "avait pour localisation"@fr;
+  sh:description "Une personne morale est située à un endroit donné"@fr;
+  sh:nodeKind sh:IRI;
+  sh:class rico:Place;
+  dash:searchWidget core:AutocompleteProperty .
+
+sacs:PersonnePhysique_name sh:path rico:name;
+  sh:name "nom"@fr;
+  sh:description "Nom de la personne physique"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:Literal;
+  sh:datatype rdf:langString;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole;
+  dash:searchWidget core:SearchProperty .
+
+sacs:PersonnePhysique_hasOrHadOccupationOfType sh:path rico:hasOrHadOccupationOfType;
+  sh:name "avait pour type de profession"@fr;
+  sh:description "Une personne physique a une profession"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:class rico:OccupationType;
+  dash:searchWidget core:ListProperty .
+
+sacs:PersonnePhysique_hasOrHadDemographicGroup sh:path rico:hasOrHadDemographicGroup;
+  sh:name "avait pour sexe supposé"@fr;
+  sh:description "Sexe de la personne physique"@fr;
+  sh:minCount "1"^^xsd:integer;
+  sh:maxCount "1"^^xsd:integer;
+  sh:nodeKind sh:IRI;
+  sh:node sacs:DemographicGroup;
+  dash:searchWidget core:ListProperty .
+
+sacs:LegalStatus_inScheme sh:path skos:inScheme;
+  sh:name "in scheme"@fr;
+  sh:hasValue vocabulaire:ju .
+
+sacs:IdentifierType_inScheme sh:path skos:inScheme;
+  sh:name "in scheme"@fr;
+  sh:hasValue vocabulaire:id .
+
+sacs:PlaceType_inScheme sh:path skos:inScheme;
+  sh:name "in scheme"@fr;
+  sh:hasValue vocabulaire:li .
+
+sacs:EventType_inScheme sh:path skos:inScheme;
+  sh:name "in scheme"@fr;
+  sh:hasValue vocabulaire:fa .
+
+sacs:OccupationType_inScheme sh:path skos:inScheme;
+  sh:name "in scheme"@fr;
+  sh:hasValue vocabulaire:pr .
+
+sacs:ActivityType_inScheme sh:path skos:inScheme;
+  sh:name "in scheme"@fr;
+  sh:hasValue vocabulaire:ac .
+
+sacs:CarrierType_inScheme sh:path skos:inScheme;
+  sh:name "in scheme"@fr;
+  sh:hasValue vocabulaire:su .
+
+sacs:DemographicGroup_inScheme sh:path skos:inScheme;
+  sh:name "in scheme"@fr;
+  sh:hasValue vocabulaire:sx .
+
+sacs:CorporateBodyType_inScheme sh:path skos:inScheme;
+  sh:name "in scheme"@fr;
+  sh:hasValue vocabulaire:cl .
+
+sacs:TypeProcedure_inScheme sh:path skos:inScheme;
+  sh:name "in scheme"@fr;
+  sh:hasValue vocabulaire:pc .
+
+sacs:OrdreInstruction_inScheme sh:path skos:inScheme;
+  sh:name "in scheme"@fr;
+  sh:hasValue vocabulaire:oi .
+
+sacs:LegalStatus_prefLabel sh:path skos:prefLabel;
+  sh:name "libellé"@fr;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole .
+
+sacs:IdentifierType_prefLabel sh:path skos:prefLabel;
+  sh:name "libellé"@fr;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole .
+
+sacs:PlaceType_prefLabel sh:path skos:prefLabel;
+  sh:name "libellé"@fr;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole .
+
+sacs:EventType_prefLabel sh:path skos:prefLabel;
+  sh:name "libellé"@fr;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole .
+
+sacs:OccupationType_prefLabel sh:path skos:prefLabel;
+  sh:name "libellé"@fr;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole .
+
+sacs:ActivityType_prefLabel sh:path skos:prefLabel;
+  sh:name "libellé"@fr;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole .
+
+sacs:CarrierType_prefLabel sh:path skos:prefLabel;
+  sh:name "libellé"@fr;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole .
+
+sacs:DemographicGroup_prefLabel sh:path skos:prefLabel;
+  sh:name "libellé"@fr;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole .
+
+sacs:CorporateBodyType_prefLabel sh:path skos:prefLabel;
+  sh:name "libellé"@fr;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole .
+
+sacs:TypeProcedure_prefLabel sh:path skos:prefLabel;
+  sh:name "libellé"@fr;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole .
+
+sacs:OrdreInstruction_prefLabel sh:path skos:prefLabel;
+  sh:name "libellé"@fr;
+  sh:node sacs:Libelle;
+  dash:propertyRole dash:LabelRole .
+
+sacs:Diagram_Instantiation dct:title "Sac"@fr;
+  sh:order "1"^^xsd:integer .
+
+sacs:Diagram_Activity_Procedure dct:title "Procédure"@fr;
+  sh:order "2"^^xsd:integer .
+
+sacs:Diagram_Event_Place dct:title "Faits et lieux des faits"@fr;
+  sh:order "3"^^xsd:integer .
+
+sacs:Diagram_Activity_Campagne dct:title "Campagne"@fr;
+  sh:order "4"^^xsd:integer .
+
+sacs:BusinessRule_1 a sh:SPARQLConstraint;
+  dct:description "Les URI d'Identifiants doivent commencer par l'URI de leur objet"@fr;
+  sh:message "L'URI d'un identifiant ne commence pas par l'URI de son objet";
+  sh:select """PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
+SELECT $this
+WHERE {
+ $this ^rico:hasOrHadIdentifier ?object .
+ FILTER(!STRSTARTS(STR($this), STR(?object)))
+}""" .
