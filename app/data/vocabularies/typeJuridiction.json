@@ -31,7 +31,7 @@
     "Concept URI": "type:jusei",
     "skos:notation": "jusei"
   },
-  "maîtrise des eaux et forêts": {
+  "eaux et forêts": {
     "Concept URI": "type:jumai",
     "skos:notation": "jumai"
   },
@@ -54,5 +54,9 @@
   "non déterminé": {
     "Concept URI": "type:junon",
     "skos:notation": "junon"
+  },
+  "cour des aides et des monnaies": {
+    "Concept URI": "type:juaid",
+    "skos:notation": "juaid"
   }
 }
