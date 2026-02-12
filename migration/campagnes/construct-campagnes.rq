@@ -1,0 +1,137 @@
+PREFIX ruim: <http://data.esante.gouv.fr/ansm/medicament/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dct: <http://purl.org/dc/terms/> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+PREFIX fx: <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
+PREFIX type: <https://data.archives.haute-garonne.fr/type/>
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX ad31: <https://data.archives.haute-garonne.fr/ontologie#>
+
+CONSTRUCT {
+	# traitement archivistique
+	?act_traitement a rico:Activity .
+	?act_traitement rico:hasActivityType type:actra .
+	?act_traitement rico:name ?libelle_lot .
+	?act_traitement rico:hasOrHadIdentifier ?identifiant .
+	?act_traitement rico:isAssociatedWithDate ?date .
+	?date rico:expressedDate ?annee_depouillement .
+	?date rico:normalizedDateValue ?normalizedDate .
+	# temp - to be deleted later in the workflow
+	?act_traitement ad31:temp ?saisie_role .
+	?identifiant a rico:Identifier .
+	?identifiant rico:name ?num_lot .
+	?identifiant rico:hasIdentifierType type:idlot .
+	# dépouillement
+	?act_traitement rico:hasDirectSubevent ?act_depouillement .
+	?act_depouillement a rico:Activity .
+	?act_depouillement rico:hasActivityType type:acdep .
+	?act_depouillement ad31:isOrWasPerformedByAgentWithOccupationOfType ?depouillement .
+	# saisie (profession)
+	?act_traitement rico:hasDirectSubevent ?act_saisie .
+	?act_saisie a rico:Activity .
+	?act_saisie rico:hasActivityType type:acsai .
+	?act_saisie ad31:isOrWasPerformedByAgentWithOccupationOfType ?saisie_profession .
+	?act_saisie ad31:saisieDirecte ?saisie_directe .
+	# saisie (role)
+	# 
+	# validation
+	?act_traitement rico:hasDirectSubevent ?act_validation .
+	?act_validation a rico:Activity .
+	?act_validation rico:hasActivityType ?degre_validation .
+
+	# recordSet
+	?recordSet rico:hasOrganicOrFunctionalProvenance ?act_traitement .
+}
+WHERE { 
+
+	{
+		SELECT 
+			?num_lot
+			?libelle_lot
+			?saisie_directe
+			?depouillement
+			?annee_depouillement
+			?saisie_profession
+			?saisie_role
+			?degre_validation
+			?act_traitement
+			?act_depouillement
+			?act_saisie
+			?act_validation
+			?identifiant
+			?date
+			?normalizedDate
+		WHERE {
+			SERVICE <x-sparql-anything:location=campagnes_20260210.csv,csv.headers=true> { 
+			 	GRAPH ?g {
+			 		?line xyz:num_lot ?num_lot .
+			 		OPTIONAL { ?line xyz:mode_saisie ?mode_saisie_str . BIND(IF(?mode_saisie_str = "directe",true,false) AS ?saisie_directe) }
+			 		OPTIONAL { ?line xyz:depouillement ?depouillement_str . BIND(IRI(CONCAT("https://data.archives.haute-garonne.fr/type/",?depouillement_str)) AS ?depouillement) }
+			 		OPTIONAL { ?line xyz:annee_depouillement ?annee_depouillement . }
+			 		OPTIONAL { ?line xyz:saisie_profession ?saisie_profession_str . }
+			 		OPTIONAL { ?line xyz:saisie_role ?saisie_role_str . }
+			 		OPTIONAL { 
+			 			?line xyz:degre_validation ?degre_validation_str .
+			 		}
+
+			 		BIND(IRI(CONCAT("https://data.archives.haute-garonne.fr/evenement/",STRUUID())) AS ?act_traitement)
+			 		BIND(IRI(CONCAT(STR(?act_traitement),"#numero")) AS ?identifiant)
+			 		BIND(IRI(CONCAT(STR(?act_traitement),"#date")) AS ?date)
+			 		BIND(STRLANG(CONCAT("Lot ",STR(?num_lot)),"fr") AS ?libelle_lot)
+			 		BIND(IRI(CONCAT("https://data.archives.haute-garonne.fr/evenement/",STRUUID())) AS ?act_depouillement)
+			 		BIND(IRI(CONCAT("https://data.archives.haute-garonne.fr/evenement/",STRUUID())) AS ?act_saisie)
+			 		
+					BIND(
+						IF(
+							bound(?saisie_profession_str) && STRLEN(STR(?saisie_profession_str)) > 0,
+							IRI(CONCAT("https://data.archives.haute-garonne.fr/type/",STR(?saisie_profession_str))),
+							1/0
+						)
+						AS ?saisie_profession
+					)
+
+					BIND(
+						IF(
+							bound(?saisie_role_str) && STRLEN(STR(?saisie_role_str)) > 0,
+							IRI(CONCAT("https://data.archives.haute-garonne.fr/type/",STR(?saisie_role_str))),
+							1/0
+						)
+						AS ?saisie_role
+					)
+
+					BIND(
+						IF(
+							bound(?degre_validation_str) && STRLEN(STR(?degre_validation_str)) > 0,
+							IRI(CONCAT("https://data.archives.haute-garonne.fr/type/",?degre_validation_str)),
+							1/0
+						)
+						AS ?degre_validation
+					)
+
+					BIND(
+						IF(
+							bound(?degre_validation),
+							IRI(CONCAT("https://data.archives.haute-garonne.fr/evenement/",STRUUID())),
+							1/0
+						)
+						AS ?act_validation
+					)
+
+					BIND(
+						IF(
+							regex(?annee_depouillement, "^[0-9][0-9][0-9][0-9]$"),
+							STRDT(?annee_depouillement, xsd:gYear),
+							1/0
+						)
+						AS ?normalizedDate
+					)
+			 	}
+			}
+		}
+	}	
+}

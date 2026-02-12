@@ -1,0 +1,47 @@
+PREFIX ruim: <http://data.esante.gouv.fr/ansm/medicament/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dct: <http://purl.org/dc/terms/> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xyz: <http://sparql.xyz/facade-x/data/>
+PREFIX fx: <http://sparql.xyz/facade-x/ns/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rico: <https://www.ica.org/standards/RiC/ontology#>
+PREFIX type: <https://data.archives.haute-garonne.fr/type/>
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX ad31: <https://data.archives.haute-garonne.fr/ontologie#>
+
+CONSTRUCT {
+	?recordSet rico:hasOrganicOrFunctionalProvenance ?act_traitement .
+	?recordSet ad31:wasCreatedByAgentWithRole ?saisie_role .
+}
+WHERE { 
+
+	{
+		SELECT 
+			?cote
+			?num_lot
+		WHERE {
+			SERVICE <x-sparql-anything:location=correspondance_cote_lot.csv,csv.headers=true> { 
+			 	GRAPH ?g {
+			 		?line xyz:cote ?cote .
+			 		?line xyz:num_lot ?num_lot .
+			 	}
+			}
+		}
+	}	
+
+	?act_traitement a rico:Activity .
+	?act_traitement rico:hasOrHadIdentifier ?identifiant .
+	?identifiant rico:name ?num_lot .
+	OPTIONAL { ?act_traitement ad31:temp ?saisie_role . }
+
+	SERVICE <http://graphdb.sparna.fr/repositories/AD31> {
+		?recordSet rico:hasOrHadInstantiation ?sac .
+		?sac a rico:Instantiation .
+  		?sac rico:hasCarrierType type:susac .
+  		?sac rico:hasOrHadIdentifier/rico:name ?cote .
+	}
+
+}
