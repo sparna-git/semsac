@@ -9,7 +9,7 @@
   /**
  * Color of the criteria arrows (orange)
  **/
-  --primary-color-main: rgba(252, 61, 14);
+  --primary-color-main: rgba(199, 74, 27);
 
   /**
   * Color of the "unselect" buttons in criterias (dark orange)
@@ -19,27 +19,28 @@
   /**
   * Color of the bottom : folded variable selector, and of a selected value in a criteria (light orange)
   **/
-  --primary-color-medium: rgb(255, 210, 157);
+  --primary-color-medium: rgb(254, 209, 138);
 
   /**
   * variable selector background & tooltip background (even lighter orange)
   **/
-  --primary-color-light: rgb(255, 231, 203);
+  --primary-color-light: rgb(243, 246, 248);
 
   /** 
   * Color of the options arrow (optional / negation) (strong green)
+  * As well as submit section top color
   **/
-  --secondary-color-main: rgb(29, 120, 224);
+  --secondary-color-main: rgb(20, 85, 113);
 
   /** 
-  * Color of the highlight of arrows
+  * Color of the highlight of arrows, as well as play button, as well as around arrows when selected
   **/
-  --secondary-color-important: rgb(21, 87, 161);
+  --secondary-color-important: rgb(85, 159, 55);
 
   /**
-  * Color of the options arrow when not selected (light green)
+  * Color of the options arrow when not selected (light --secondary-color-main)
   **/
-  --secondary-color-light: rgb(112, 177, 252);
+  --secondary-color-light: rgb(154, 215, 247);
 
   /**
   * Color of the service option enabled
@@ -76,7 +77,7 @@
  * Red, Green and Blue components for the background color.
  * An alpha is added to this color at each line (0.1, 0.2, 0.3, etc.)
  **/
-  --bg-red: 29;
-  --bg-green: 120;
-  --bg-blue: 224;
+  --bg-red: 20;
+  --bg-green: 85;
+  --bg-blue: 113;
 }
