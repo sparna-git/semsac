@@ -1,7 +1,7 @@
 // internationalization
 const i18n = require("eleventy-plugin-i18n");
 
-const filters = require("./utils/filters.js");
+const filters = require("./src/_11ty/filters.js");
 
 //const shapesFilters = require("./utils/shapes.js");
 const slugify = require("slugify");
@@ -22,12 +22,12 @@ module.exports = async function (config) {
     config.addFilter(filterName, filters[filterName]);
   });
 
-  // pass-through
-  config.addPassthroughCopy({ static: "/" });
-
   config.addFilter("slug", (str) =>
     slugify(str, { lower: true, strict: true, locale: "fr" })
   );
+
+  // pass-through
+  config.addPassthroughCopy({ "static": "/" });
 
   return {
     markdownTemplateEngine: "njk",
@@ -35,6 +35,7 @@ module.exports = async function (config) {
     dir: {
       input: "src",
       output: "dist",
+      includes: "_includes",
       layouts: "_layouts",
       data: "_data",
     },
