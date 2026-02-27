@@ -49,6 +49,8 @@ sacs:Traitement sh:deactivated "true"^^xsd:boolean .
 sacs:Depouillement sh:deactivated "true"^^xsd:boolean .
 sacs:Saisie sh:deactivated "true"^^xsd:boolean .
 sacs:Validation sh:deactivated "true"^^xsd:boolean .
+sacs:TypeRole sh:deactivated "true"^^xsd:boolean .
+sacs:Liasse sh:deactivated "true"^^xsd:boolean .
 
 
 # Lien inverse
