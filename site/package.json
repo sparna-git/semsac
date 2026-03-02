@@ -2,6 +2,7 @@
   "name": "AD31 sacs-a-proces",
   "version": "1.0.0",
   "scripts": {
+    "clean": "rm -rf dist",
     "start": "node --max-old-space-size=10192 ./node_modules/@11ty/eleventy/cmd.cjs --serve",
     "build": "node --max-old-space-size=10192 ./node_modules/@11ty/eleventy/cmd.cjs",
     "read": "mkdir -p _json && node --max_old_space_size=8192 ./scripts/read.js",
