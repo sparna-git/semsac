@@ -25,7 +25,7 @@
     />
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../assets/fa/css/all.min.css" />
+    <link rel="stylesheet" href="assets/fa/css/all.min.css" />
 
     <!-- datepicker -->
     <link
@@ -39,10 +39,10 @@
     />
 
     <!-- Sparnatural CSS -->
-    <link rel="stylesheet" href="../assets/css/sparnatural.css" />
-    <link rel="stylesheet" href="../assets/css/sparnatural-history.css" />
-    <link rel="stylesheet" href="../assets/css/sparnatural-theme-ad31.css">
-    <link rel="stylesheet" href="../assets/fa/css/style.css" />
+    <link rel="stylesheet" href="assets/css/sparnatural.css" />
+    <link rel="stylesheet" href="assets/css/sparnatural-history.css" />
+    <link rel="stylesheet" href="assets/css/sparnatural-theme-ad31.css">
+    <link rel="stylesheet" href="assets/fa/css/style.css" />
 
     <!-- ================= STRUCTURE / LAYOUT CSS ================= -->
     <style>
@@ -73,7 +73,7 @@
     <!-- ======= NavBar ======= -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand" href="#">Sparnatural !</a>
+        <a class="navbar-brand" href="#">Sacs à Procès - Explorateur</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -87,39 +87,22 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="https://sparnatural.eu"
-                >Sparnatural Home</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="https://github.com/sparna-git/Sparnatural"
-                >Github</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://docs.sparnatural.eu"
-                >Documentation</a
-              >
-            </li>
-            <li class="nav-item" style="margin-left: 500px">
-              <a class="nav-link" href="?lang=fr">fr</a>
-            </li>
-            &nbsp;|&nbsp;
-            <li class="nav-item"><a class="nav-link" href="?lang=en">en</a></li>
+
           </ul>
         </div>
       </div>
     </nav>
     <!-- ================= MAIN ================= -->
     <main>
+      <section class="container mt-4">
+        Explorez le fonds des sacs à procès !
+      </section>
+
       <!-- ================= SPARNATURAL ================= -->
       <section class="container mt-4">
-        
+
         <spar-natural
-          src="https://xls2rdf.sparna.fr/rest/convert?noPostProcessings=true&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1X6GqNxMBVkflrJGj2kAm-wYz0Ey7nEOt%2Fexport%3Fformat%3Dxlsx ../configs/sparnatural-specific.ttl"
+          src="configs/ad31-shacl.ttl configs/sparnatural-specific.ttl"
           endpoint="https://data.sparna.fr/graphdb/repositories/AD31"
           lang="fr"
           defaultLang="fr"
@@ -132,28 +115,28 @@
       </section>
 
       <!-- ================= ACTION BAR ================= -->
-      <section class="container mb-1">
+      <section class="container mt-3">
         <div class="row">
           <div class="col-md-6">
             <span style="font-style: italic; font-size: 0.9em">
               <a href="#" id="sparql-toggle">
                 <i id="sparql-toggle-icon" class="fad fa-eye fa-fw"></i>
-                <span data-i18n="toggleSparql"></span>Toggle SPARQL
+                <span data-i18n="toggleSparql">Toggle SPARQL</span>
               </a>
               &nbsp;|&nbsp;
               <a href="#" id="share">
                 <i class="fad fa-share-square"></i>
-                <span data-i18n="share"> Share</span>
+                <span data-i18n="share">Share</span>
               </a>
               &nbsp;|&nbsp;
               <a href="#" id="export">
                 <i class="fad fa-file-export"></i>
-                <span data-i18n="export"> Export</span>
+                <span data-i18n="export">Export</span>
               </a>
               &nbsp;|&nbsp;
               <a href="#" id="import">
                 <i class="fad fa-file-import"></i>
-                <span data-i18n="import"> Import</span>
+                <span data-i18n="import">Import</span>
               </a>
             </span>
           </div>
@@ -165,8 +148,7 @@
               style="width: 100%; appearance: auto !important"
             >
               <option value="none" selected>
-                <span data-i18n="loadQueryExemple"
-                  >Charger une requête d’exemple…</span
+                <span data-i18n="loadQueryExemple">Charger une requête d’exemple…</span
                 >
               </option>
             </select>
@@ -177,14 +159,14 @@
 
             <button id="myCustomButton" class="btn btn-primary w-100">
               <i class="fad fa-history"></i
-              ><span data-i18n="history.title"> History</span>
+              ><span data-i18n="history.title">History</span>
             </button>
           </div>
         </div>
       </section>
 
       <!-- ================= YASQE ================= -->
-      <section class="container">
+      <section class="container mt-3">
         <div id="yasqe"></div>
       </section>
 
@@ -320,10 +302,10 @@
           },
           fr: {
             "history.title": " Historique",
-            toggleSparql: "  Afficher/Masquer éditeur SPARQL",
+            toggleSparql: "  Afficher/Masquer le SPARQL",
             share: "Partager",
-            export: "Exporter la requête en JSON",
-            import: "Charger une requête en JSON",
+            export: "Exporter la requête",
+            import: "Charger une requête",
             loadQueryExemple: "Charger une requête d’exemple…",
             "shareModal.instructions":
               "Pour partager cette requête, envoyez le lien suivant :",
@@ -350,16 +332,16 @@
     <script src="https://unpkg.com/@triply/yasgui/build/yasgui.min.js"></script>
 
     <!-- Sparnatural -->
-    <script src="../assets/js/sparnatural.js"></script>
-    <script src="../assets/js/sparnatural-yasgui-plugins.js"></script>
-    <script src="../assets/js/sparnatural-history.js"></script>
-    <script src="../assets/js/sample-queries.js"></script>
+    <script src="assets/js/sparnatural.js"></script>
+    <script src="assets/js/sparnatural-yasgui-plugins.js"></script>
+    <script src="assets/js/sparnatural-history.js"></script>
+    <script src="assets/js/sample-queries.js"></script>
 
     <!-- JsonUrl (pour share / compress URL) -->
     <script src="https://cdn.jsdelivr.net/npm/json-url@3.1.0/dist/browser/json-url.min.js"></script>
 
     <!-- Custom JS -->
-    <script src="../assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
 
