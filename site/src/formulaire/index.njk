@@ -63,11 +63,11 @@ title: Sacs à procès - recherche de procédures
           <div class="tab-pane active" id="sparnatural-form-1">
             <!-- Sparnatural Form -->
             <sparnatural-form
-              src="https://xls2rdf.sparna.fr/rest/convert?noPostProcessings=true&amp;url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1X6GqNxMBVkflrJGj2kAm-wYz0Ey7nEOt%2Fexport%3Fformat%3Dxlsx {{ "/configs/sparnatural-specific.ttl" | relative(page) }}"
+              src="{{ "/configs/ad31-shacl.ttl" | relative(page) }} {{ "/configs/sparnatural-specific.ttl" | relative(page) }}"
               lang="fr"
               defaultLang="fr"
               limit="5000"
-              endpoint="https://proxy.sparnatural.eu/sparql-proxy/sparql?endpoint=http%3A%2F%2Fgraphdb.sparna.fr%2Frepositories%2FAD31"
+              endpoint="https://data.sparna.fr/graphdb/repositories/AD31"
               form="{{ "/configs/procedures/form.json" | relative(page) }}"
               query="{{ "/configs/procedures/query.json" | relative(page) }}"
               prefixes="skos:http://www.w3.org/2004/02/skos/core# rico:https://www.ica.org/standards/RiC/ontology#"

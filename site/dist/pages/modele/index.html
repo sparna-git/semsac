@@ -6,23 +6,75 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Le modèle de données</title>
 
-  <link rel="icon" href="/fav.png" type="image/png">
+  <link rel="icon" href="../../fav.png" type="image/png">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="../../assets/css/style.css" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../assets/fa/css/all.min.css" />
 
+  <!-- Template Main CSS File -->
+  <link href="../../assets/css/style.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    #footer_content {
+      display: block;
+      width: 85% !important;
+      margin: 0 auto !important;
+    }
+    </style>
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
-  <main>
-    <p>Procédure
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: white; border-bottom: 1px solid #ccc;">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="../..">Explorateur</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../formulaire">Formulaire</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../projet">Le Projet</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Le Modèle</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../fonds">Le Fonds</a>
+          </li>
+        </ul>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <a href="https://archives.haute-garonne.fr/" target="_blank" rel="noopener">
+          <img src="../../assets/images/Logo_AD31_point.png" alt="AD31" height="50">
+        </a>
+        <a href="https://www.haute-garonne.fr/" target="_blank" rel="noopener">
+          <img src="../../assets/images/Logo%20CD31.png" alt="Conseil Départemental 31" height="50">
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow-1">
+    
+<link href="../../assets/css/content-pages.css" rel="stylesheet">
+
+<div class="content-page">
+  <h1>Le modèle de données</h1>
+  <p>Procédure
 Procédure judiciaire à l’origine des documents. Il s’agit du cœur de la description.</p>
 <p>Fait
 Objet de la procédure</p>
@@ -36,28 +88,27 @@ Entité géographique permettant de contextualiser des faits, une juridiction, o
 Contenu intellectuel des documents présents dans le sac</p>
 <p>Sac
 Aspect matériel de l’ensemble documentaire</p>
-<p>Les <strong>sacs</strong> à procès contiennent un ensemble de <strong>documents</strong>  réunis dans le cadre d’une <strong>procédure</strong> judiciaire. Il s’agit en réalité d’une chaîne de procédures (depuis la première <strong>instruction</strong> jusqu’à l’arrêt du Parlement), mais décrite comme un ensemble. La procédure a été instruite successivement par plusieurs <strong>juridictions</strong>, chacune ayant pu produire des éléments du sac. Chaque juridiction se caractérise par un <strong>type de juridiction</strong> et un <strong>lieu</strong> (généralement le siège, parfois le ressors).</p>
-<p>La procédure, qui a eu lieu à une <strong>date</strong> donnée, implique plusieurs <strong>parties</strong>. Il peut s’agir de <strong>personnes morales</strong>, comme de <strong>personnes physiques</strong>. Le rôle de la partie dans la procédure (demandeur ou défenseur) n’est pas relevé. Lorsque cela est possible, la <strong>profession</strong> et le <strong>sexe</strong> supposé des personnes physiques sont relevés. Les personnes morales se caractérisent par un <strong>type de collectivité</strong> et le  <strong>lieu</strong> de leur siège.</p>
+<p>Les <strong>sacs</strong> à procès contiennent un ensemble de <strong>documents</strong> réunis dans le cadre d’une <strong>procédure</strong> judiciaire. Il s’agit en réalité d’une chaîne de procédures (depuis la première <strong>instruction</strong> jusqu’à l’arrêt du Parlement), mais décrite comme un ensemble. La procédure a été instruite successivement par plusieurs <strong>juridictions</strong>, chacune ayant pu produire des éléments du sac. Chaque juridiction se caractérise par un <strong>type de juridiction</strong> et un <strong>lieu</strong> (généralement le siège, parfois le ressors).</p>
+<p>La procédure, qui a eu lieu à une <strong>date</strong> donnée, implique plusieurs <strong>parties</strong>. Il peut s’agir de <strong>personnes morales</strong>, comme de <strong>personnes physiques</strong>. Le rôle de la partie dans la procédure (demandeur ou défenseur) n’est pas relevé. Lorsque cela est possible, la <strong>profession</strong> et le <strong>sexe</strong> supposé des personnes physiques sont relevés. Les personnes morales se caractérisent par un <strong>type de collectivité</strong> et le <strong>lieu</strong> de leur siège.</p>
 <p>Chaque procédure repose sur des <strong>faits</strong> qui sont qualifiés en fonction d’une liste d’autorité et du <strong>lieu</strong> où ils sont advenus.</p>
 <p>Une procédure peut être liée à une autre.</p>
 <p>Dans le courant du XIXe siècle, certains sacs ont étés regroupés dans des <strong>liasses</strong> dans le cadre d’une action archivistique de nature pour l’instant inconnue.</p>
 <p>Toutes ces informations sont issues du <strong>dépouillement</strong> des sacs à procès depuis plusieurs décennies. Elles ont pu être relevées par des <strong>étudiants</strong>, des <strong>bénévoles</strong>, des <strong>archivistes</strong> ou des <strong>chercheurs</strong>. Si la <strong>saisie</strong> informatique est aujourd’hui concomitante au dépouillement, elle a longtemps été réalisée a posteriori, souvent plusieurs années plus tard.</p>
 <p>Une partie des informations relevées par des étudiants ou des bénévoles a été <strong>relue</strong>, voire <strong>validée</strong> par des archivistes.</p>
 
+</div>
+
   </main>
 
-  <!-- Pied de page SAPA -->
-  <footer class="text-center py-4" style="background: #f8f9fa; border-top: 1px solid #e5e5e5;">
-    <small>
-      C'est un pied de page
-    </small>
+  <!-- Footer -->
+  <footer class="text-left py-4 mt-auto" style="background-color: #1d1d1b;">
+    <div id="footer_content">
+      <img src="../../assets/images/CD-cartouche-AGIR-AVEC%20rvb.png" alt="Conseil Départemental de la Haute-Garonne" height="60">
+    </div>
   </footer>
 
-  <script>
-
-  </script>
-
-  
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 </body>
 </html>

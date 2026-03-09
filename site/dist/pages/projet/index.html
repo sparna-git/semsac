@@ -6,51 +6,102 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Le projet de sémantisation</title>
 
-  <link rel="icon" href="/fav.png" type="image/png">
+  <link rel="icon" href="../../fav.png" type="image/png">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="../../assets/css/style.css" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../assets/fa/css/all.min.css" />
 
+  <!-- Template Main CSS File -->
+  <link href="../../assets/css/style.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    #footer_content {
+      display: block;
+      width: 85% !important;
+      margin: 0 auto !important;
+    }
+    </style>
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
-  <main>
-    <p>Quelle place occupaient les femmes face à la justice de l’ancien régime ?</p>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: white; border-bottom: 1px solid #ccc;">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="../..">Explorateur</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../formulaire">Formulaire</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Le Projet</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../modele">Le Modèle</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../fonds">Le Fonds</a>
+          </li>
+        </ul>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <a href="https://archives.haute-garonne.fr/" target="_blank" rel="noopener">
+          <img src="../../assets/images/Logo_AD31_point.png" alt="AD31" height="50">
+        </a>
+        <a href="https://www.haute-garonne.fr/" target="_blank" rel="noopener">
+          <img src="../../assets/images/Logo%20CD31.png" alt="Conseil Départemental 31" height="50">
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow-1">
+    
+<link href="../../assets/css/content-pages.css" rel="stylesheet">
+
+<div class="content-page">
+  <h1>Le projet de sémantisation</h1>
+  <p>Quelle place occupaient les femmes face à la justice de l’ancien régime ?</p>
 <p>Les meurtres ont-ils été plus fréquents à certaines périodes ?</p>
 <p>Observe-t-on des différences selon les lieux ou les types d’affaires ?</p>
 <p>Autant de questions auxquelles il était jusqu’à présent difficile de répondre à partir d’un simple moteur de recherche.</p>
-<p>Le projet SemSacs  permet  un nouveau mode d’interrogation de la base des sacs à procès du parlement de Toulouse.</p>
+<p>Le projet SemSacs permet un nouveau mode d’interrogation de la base des sacs à procès du parlement de Toulouse.</p>
 <p>Là où le moteur de recherche classique renvoie une liste de documents, cette interface s’appuie sur les relations qui existent entre les informations contenues dans les dossiers.</p>
 <p>Fondée sur la sémantisation des données, elle permet de croiser les procédures, les faits, les lieux et les acteurs afin de faire apparaître des logiques, des récurrences et des contextes.</p>
-<p>D’un point de vue technique, le projet  SemSacs poursuivait deux objectifs complémentaires.</p>
+<p>D’un point de vue technique, le projet SemSacs poursuivait deux objectifs complémentaires.</p>
 <p>Il s’agissait, d’une part, d’expérimenter la nouvelle norme de description archivistique Records in Contexts (RiC) et son modèle conceptuel RiC-CM et, d’autre part, de mobiliser les technologies du web sémantique à travers l’ontologie RiC-O.</p>
 <p>Le but était à la fois d’évaluer dans quelle mesure ces modèles pouvaient être appliqués de manière concrète à un corpus existant, et de montrer l’intérêt de cette approche en termes d’exploration, de mise en relation des données et de renouvellement des usages.</p>
 <p>Pour y parvenir, un travail approfondi sur les données existantes a été nécessaire. Un peu plus de 5.000 notices ont été restructurées et enrichies, ce qui permet aujourd’hui de croiser davantage d’informations et de mieux comprendre les logiques qui traversent les procédures.</p>
 <p>Parallèlement, le projet a permis d’intégrer une dimension de fiabilité et de traçabilité des données, rendue possible par l’application de la norme RiC. Chaque étape du traitement archivistique a été documentée, offrant aux utilisateurs une lecture transparente du corpus.</p>
 <p>La dimension expérimentale de ce projet n’est pas une fin en soi : elle vise avant tout à proposer de nouvelles manières d’accéder aux archives et d’en explorer la richesse.</p>
-<p>Le projet  SemSacs, mené par les Archives départementales de la Haute-Garonne, a bénéficié de l'expertise de Florence Clavaud, responsable du Lab des Archives nationales, et membre exécutif du CIA/EGAD, en charge du développement de RiC, ainsi que de l'appui technique et méthodologique de la société Sparna.</p>
+<p>Le projet SemSacs, mené par les Archives départementales de la Haute-Garonne, a bénéficié de l'expertise de Florence Clavaud, responsable du Lab des Archives nationales, et membre exécutif du CIA/EGAD, en charge du développement de RiC, ainsi que de l'appui technique et méthodologique de la société Sparna.</p>
+
+</div>
 
   </main>
 
-  <!-- Pied de page SAPA -->
-  <footer class="text-center py-4" style="background: #f8f9fa; border-top: 1px solid #e5e5e5;">
-    <small>
-      C'est un pied de page
-    </small>
+  <!-- Footer -->
+  <footer class="text-left py-4 mt-auto" style="background-color: #1d1d1b;">
+    <div id="footer_content">
+      <img src="../../assets/images/CD-cartouche-AGIR-AVEC%20rvb.png" alt="Conseil Départemental de la Haute-Garonne" height="60">
+    </div>
   </footer>
 
-  <script>
-
-  </script>
-
-  
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 </body>
 </html>
