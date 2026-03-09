@@ -129,6 +129,10 @@ var queries = [
   "distinct": true,
   "variables": [
     {
+      "termType": "Variable",
+      "value": "Annee"
+    },
+    {
       "expression": {
         "type": "aggregate",
         "aggregation": "count",
@@ -140,15 +144,11 @@ var queries = [
       },
       "variable": {
         "termType": "Variable",
-        "value": "Procedure_count"
+        "value": "NombreProcedure"
       }
-    },
-    {
-      "termType": "Variable",
-      "value": "DateLiteral"
     }
   ],
-  "order": null,
+  "order": "asc",
   "branches": [
     {
       "line": {
@@ -208,7 +208,7 @@ var queries = [
           "line": {
             "s": "Date",
             "p": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Date_normalizedDateValue",
-            "o": "DateLiteral",
+            "o": "Annee",
             "sType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Date",
             "oType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#DateLiteral",
             "criterias": []
