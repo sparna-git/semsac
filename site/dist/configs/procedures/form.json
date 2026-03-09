@@ -63,8 +63,15 @@
     },
 
 
-
-
+            {
+      "variable": "Coordinates",
+      "node": {
+        "type": "UserPrompt",
+        "name": {
+          "fr": "Lieu des faits (carte)"
+        }
+      }
+    },
 
 
 
