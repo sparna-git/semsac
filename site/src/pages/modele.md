@@ -1,5 +1,5 @@
 ---
-layout: sac-a-proces.njk
+layout: content-page.njk
 title: Le modèle de données
 ---
 
@@ -24,9 +24,9 @@ Contenu intellectuel des documents présents dans le sac
 Sac
 Aspect matériel de l’ensemble documentaire
 
-Les **sacs** à procès contiennent un ensemble de **documents**  réunis dans le cadre d’une **procédure** judiciaire. Il s’agit en réalité d’une chaîne de procédures (depuis la première **instruction** jusqu’à l’arrêt du Parlement), mais décrite comme un ensemble. La procédure a été instruite successivement par plusieurs **juridictions**, chacune ayant pu produire des éléments du sac. Chaque juridiction se caractérise par un **type de juridiction** et un **lieu** (généralement le siège, parfois le ressors).
+Les **sacs** à procès contiennent un ensemble de **documents** réunis dans le cadre d’une **procédure** judiciaire. Il s’agit en réalité d’une chaîne de procédures (depuis la première **instruction** jusqu’à l’arrêt du Parlement), mais décrite comme un ensemble. La procédure a été instruite successivement par plusieurs **juridictions**, chacune ayant pu produire des éléments du sac. Chaque juridiction se caractérise par un **type de juridiction** et un **lieu** (généralement le siège, parfois le ressors).
 
-La procédure, qui a eu lieu à une **date** donnée, implique plusieurs **parties**. Il peut s’agir de **personnes morales**, comme de **personnes physiques**. Le rôle de la partie dans la procédure (demandeur ou défenseur) n’est pas relevé. Lorsque cela est possible, la **profession** et le **sexe** supposé des personnes physiques sont relevés. Les personnes morales se caractérisent par un **type de collectivité** et le  **lieu** de leur siège.
+La procédure, qui a eu lieu à une **date** donnée, implique plusieurs **parties**. Il peut s’agir de **personnes morales**, comme de **personnes physiques**. Le rôle de la partie dans la procédure (demandeur ou défenseur) n’est pas relevé. Lorsque cela est possible, la **profession** et le **sexe** supposé des personnes physiques sont relevés. Les personnes morales se caractérisent par un **type de collectivité** et le **lieu** de leur siège.
 
 Chaque procédure repose sur des **faits** qui sont qualifiés en fonction d’une liste d’autorité et du **lieu** où ils sont advenus.
 
