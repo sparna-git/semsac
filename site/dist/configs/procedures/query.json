@@ -9,58 +9,29 @@
       "termType": "Variable",
       "value": "Libelle"
     },
+
+
     {
       "termType": "Variable",
       "value": "Libelle_2"
     },
-    {
-      "termType": "Variable",
-      "value": "TypeProcedure"
-    },
-    {
-      "termType": "Variable",
-      "value": "Libelle_3"
-    },
-    {
-      "termType": "Variable",
-      "value": "Juridiction"
-    },
-    {
-      "termType": "Variable",
-      "value": "LegalStatus"
-    },
-    {
-      "termType": "Variable",
-      "value": "Coordinates"
-    },
+
+
+
     {
       "termType": "Variable",
       "value": "Lieu_2"
     },
-    {
-      "termType": "Variable",
-      "value": "PersonneMorale"
-    },
-    {
-      "termType": "Variable",
-      "value": "PersonnePhysique"
-    },
+
+
+
     {
       "termType": "Variable",
       "value": "EventType"
     },
-    {
-      "termType": "Variable",
-      "value": "DemographicGroup"
-    },
-    {
-      "termType": "Variable",
-      "value": "OccupationType"
-    },
-    {
-      "termType": "Variable",
-      "value": "CorporateBodyType"
-    },
+
+
+
     {
       "termType": "Variable",
       "value": "DateLiteral"
@@ -68,7 +39,13 @@
     {
       "termType": "Variable",
       "value": "DateLiteral_2"
+    },
+
+    {
+      "termType": "Variable",
+      "value": "Identifiant_2"
     }
+
   ],
   "order": null,
   "branches": [
@@ -427,7 +404,34 @@
           "optional": true
         }
       ]
+    },
+
+    {
+      "line": {
+        "s": "Procedure",
+        "p": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Procedure_inverse_documents",
+        "o": "Notice_2",
+        "sType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Procedure",
+        "oType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Notice",
+        "criterias": []
+      },
+      "children": [
+        {
+          "line": {
+            "s": "Notice_2",
+            "p": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Notice_hasOrHadIdentifier",
+            "o": "Identifiant_2",
+            "sType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Notice",
+            "oType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Identifiant",
+            "criterias": []
+          },
+          "optional": true
+        }
+      ]
     }
+
+
+
   ],
   "limit": 1000
 }
