@@ -3,6 +3,10 @@ layout: content-page.njk
 title: Le modèle de données
 ---
 
+_Un encodage formel et détaillé du modèle de données, exprimé à l'aide du standard SHACL, est disponible [ici](../../shacl/AD31%20SHACL.html). Cet encodage détaillé sert de base à la configuration de l'explorateur et du formulaire sur ce site._
+
+_Cette page documente les principales entités qui entrent en jeu dans la sémantisation en RiC-O du fonds des sacs à procès._
+
 ##### Procédure
 Procédure judiciaire à l’origine des documents. Il s’agit du cœur de la description.
 
@@ -16,7 +20,7 @@ Une procédure peut être liée à une autre.
 
 La modélisation détaillée correspondante des procedures en RiC-O est la suivante :
 
-[![](/assets/images/modele-procedures.png)](/assets/images/modele-procedures.png)
+[![](../../assets/images/modele-procedures.png)](../../assets/images/modele-procedures.png)
 
 
 ##### Fait
@@ -27,7 +31,7 @@ Entité géographique permettant de contextualiser des faits, une juridiction, o
 
 La modélisation détaillée correspondante des faits et de leur lieu en RiC-O est la suivante :
 
-[![](/assets/images/modele-faits-lieux.png)](/assets/images/modele-faits-lieux.png)
+[![](../../assets/images/modele-faits-lieux.png)](../../assets/images/modele-faits-lieux.png)
 
 
 #### Agents
@@ -40,7 +44,7 @@ Personne physique ou morale impliquée dans la procédure (défenseur ou demande
 
 La modélisation détaillée correspondante des Agents en RiC-O est la suivante :
 
-[![](/assets/images/modele-agents.png)](/assets/images/modele-agents.png)
+[![](../../assets/images/modele-agents.png)](../../assets/images/modele-agents.png)
 
 
 ##### Notice
@@ -55,7 +59,7 @@ Dans le courant du XIXe siècle, certains sacs ont étés regroupés dans des **
 
 La modélisation détaillée correspondante des sacs et des notices est la suivante :
 
-[![](/assets/images/modele-sacs-notices.png)](/assets/images/modele-sacs-notices.png)
+[![](../../assets/images/modele-sacs-notices.png)](../../assets/images/modele-sacs-notices.png)
 
 
 ##### Traitement archivistique
@@ -65,4 +69,4 @@ Une partie des informations relevées par des étudiants ou des bénévoles a é
 
 La modélisation détaillée correspondante est la suivante (on notera l'utilisation de quelques propriétés spécifiques en plus de RiC-O) :
 
-[![](/assets/images/modele-traitement_archivistique.png)](/assets/images/modele-traitement_archivistique.png)
+[![](../../assets/images/modele-traitement_archivistique.png)](../../assets/images/modele-traitement_archivistique.png)
