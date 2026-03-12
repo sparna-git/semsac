@@ -1,11 +1,14 @@
 {
   "bindings": [
     {
-      "variable": "Libelle",
+      "variable": "Procedure_Libelle",
       "node": {
         "type": "UserPrompt",
         "name": {
           "fr": "Libellé de la procédure"
+        },
+        "help": {
+          "fr": "Expression régulière : ^Début, Fin$, . = joker 1 caractère, .* = joker plusieurs caractères"
         }
       }
     },
@@ -16,6 +19,9 @@
         "type": "UserPrompt",
         "name": {
           "fr": "Libellé de la notice"
+        },
+        "help": {
+            "fr": "Expression régulière : ^Début, Fin$, . = joker 1 caractère, .* = joker plusieurs caractères"
         }
       }
     },
@@ -36,6 +42,9 @@
         "type": "UserPrompt",
         "name": {
           "fr": "Cote"
+        },
+        "help": {
+          "fr": "Expression régulière : ^Début, Fin$, . = joker 1 caractère, .* = joker plusieurs caractères"
         }
       }
     },
@@ -71,7 +80,7 @@
       }
     },
     {
-      "variable": "Lieu",
+      "variable": "LieuIRI",
       "node": {
         "type": "UserPrompt",
         "name": {
@@ -104,7 +113,7 @@
 
 
             {
-      "variable": "EventType",
+      "variable": "QualificationDesFaitsIRI",
       "node": {
         "type": "UserPrompt",
         "name": {
