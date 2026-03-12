@@ -61,9 +61,7 @@
         }
       }
     },
-
-
-            {
+    {
       "variable": "Coordinates",
       "node": {
         "type": "UserPrompt",
@@ -72,17 +70,8 @@
         }
       }
     },
-
-
-
-
-
-
-
-
-
-            {
-      "variable": "Lieu_2",
+    {
+      "variable": "Lieu",
       "node": {
         "type": "UserPrompt",
         "name": {
@@ -90,9 +79,7 @@
         }
       }
     },
-
-
-        {
+    {
       "variable": "PersonneMorale",
       "node": {
         "type": "UserPrompt",
@@ -169,7 +156,7 @@
 
 
             {
-      "variable": "DateLiteral",
+      "variable": "DateDebut",
       "node": {
         "type": "UserPrompt",
         "name": {
@@ -180,7 +167,7 @@
 
 
                 {
-      "variable": "DateLiteral_2",
+      "variable": "DateFin",
       "node": {
         "type": "UserPrompt",
         "name": {
