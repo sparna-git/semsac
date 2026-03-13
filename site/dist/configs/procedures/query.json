@@ -3,6 +3,10 @@
   "variables": [
     {
       "termType": "Variable",
+      "value": "Lien"
+    },
+    {
+      "termType": "Variable",
       "value": "Procedure_Libelle"
     },
     {
@@ -42,10 +46,6 @@
     {
       "termType": "Variable",
       "value": "DateFin"
-    },
-    {
-      "termType": "Variable",
-      "value": "Lien"
     }
   ],
   "order": null,
@@ -84,12 +84,24 @@
           "line": {
             "s": "Notice",
             "p": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Notice_hasOrHadIdentifier",
-            "o": "Lien",
+            "o": "LienIRI",
             "sType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Notice",
             "oType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Identifiant",
             "criterias": []
           },
-          "optional":true
+          "optional":true,
+          "children": [
+            {
+              "line": {
+                "s": "LienIRI",
+                "p": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Identifiant_name",
+                "o": "Lien",
+                "sType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Identifiant",
+                "oType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Libelle",
+                "criterias": []
+              }
+            }
+          ]
         }
       ]
     },

@@ -280,6 +280,19 @@
     maxPersistentResponseSize: 0
   });
 
+  // pre-process the ARK to make it linkable
+  yasr.plugins["TableX"].config.bindingSetAdapter = function(bindingSet) {
+    if(bindingSet && bindingSet["Lien"]) {
+      let ark = bindingSet["Lien"].value;
+      bindingSet["Lien"] = {
+        "type": "x-labelled-uri",
+        "value": "https://archives.haute-garonne.fr/ark:"+ark,
+        "label": "&#128065"
+      }
+    }
+    return bindingSet;
+  };
+
   // link yasqe and yasr
   yasqe.on("queryResponse", function(_yasqe, response, duration) {
     yasr.setResponse(response, duration);
