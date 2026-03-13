@@ -1,32 +1,18 @@
 {
   "bindings": [
     {
-      "variable": "Procedure_Libelle",
+      "variable": "Procedure_Search",
       "node": {
         "type": "UserPrompt",
         "name": {
-          "fr": "Libellé de la procédure"
+          "fr": "Recherche (procédure ou description de sa notice)"
         },
         "help": {
           "fr": "Expression régulière : ^Début, Fin$, . = joker 1 caractère, .* = joker plusieurs caractères"
         }
       }
     },
-
     {
-      "variable": "Libelle_2",
-      "node": {
-        "type": "UserPrompt",
-        "name": {
-          "fr": "Libellé de la notice"
-        },
-        "help": {
-            "fr": "Expression régulière : ^Début, Fin$, . = joker 1 caractère, .* = joker plusieurs caractères"
-        }
-      }
-    },
-
-        {
       "variable": "TypeProcedure",
       "node": {
         "type": "UserPrompt",
@@ -34,9 +20,8 @@
           "fr": "Type de procédure"
         }
       }
-    },
-  
-          {
+    },  
+    {
       "variable": "Libelle_3",
       "node": {
         "type": "UserPrompt",
@@ -48,25 +33,48 @@
         }
       }
     },
-
-
-            {
+    {
+      "variable": "DateDebut",
+      "node": {
+        "type": "UserPrompt",
+        "name": {
+          "fr": "Date de début"
+        }
+      }
+    },
+    {
+      "variable": "DateFin",
+      "node": {
+        "type": "UserPrompt",
+        "name": {
+          "fr": "Date de fin"
+        }
+      }
+    },
+    {
       "variable": "Juridiction",
       "node": {
         "type": "UserPrompt",
         "name": {
-          "fr": "Juridiction"
+          "fr": "Juridiction (recherche)"
         }
       }
     },
-
-
-            {
+    {
       "variable": "LegalStatus",
       "node": {
         "type": "UserPrompt",
         "name": {
-          "fr": "Type de juridiction"
+          "fr": "Juridiction par type"
+        }
+      }
+    },
+    {
+      "variable": "QualificationDesFaitsIRI",
+      "node": {
+        "type": "UserPrompt",
+        "name": {
+          "fr": "Qualification des faits"
         }
       }
     },
@@ -87,7 +95,7 @@
       "node": {
         "type": "UserPrompt",
         "name": {
-          "fr": "Lieu des faits (autocomplete)"
+          "fr": "Lieu des faits (recherche)"
         }
       }
     },
@@ -96,101 +104,45 @@
       "node": {
         "type": "UserPrompt",
         "name": {
-          "fr": "Personne Morale"
+          "fr": "Personne morale impliquée"
         }
       }
     },
-
-
-            {
-      "variable": "PersonnePhysique",
-      "node": {
-        "type": "UserPrompt",
-        "name": {
-          "fr": "Personne Physique"
-        }
-      }
-    },
-
-
-
-
-            {
-      "variable": "QualificationDesFaitsIRI",
-      "node": {
-        "type": "UserPrompt",
-        "name": {
-          "fr": "Qualification des faits"
-        }
-      }
-    },
-
-
-
-            {
-      "variable": "DemographicGroup",
-      "node": {
-        "type": "UserPrompt",
-        "name": {
-          "fr": "Sexe"
-        }
-      }
-    },
-
-
-
-
-            {
-      "variable": "OccupationType",
-      "node": {
-        "type": "UserPrompt",
-        "name": {
-          "fr": "Profession"
-        }
-      }
-    },
-
-
-
-
-
-
-            {
+    {
       "variable": "CorporateBodyType",
       "node": {
         "type": "UserPrompt",
         "name": {
-          "fr": "Type de collectivité"
+          "fr": "Type de personne morale impliquée"
         }
       }
     },
-
-
-
-            {
-      "variable": "DateDebut",
+    {
+      "variable": "PersonnePhysique",
       "node": {
         "type": "UserPrompt",
         "name": {
-          "fr": "Date début"
+          "fr": "Personne physique impliquée"
         }
       }
     },
-
-
-                {
-      "variable": "DateFin",
+    {
+      "variable": "DemographicGroup",
       "node": {
         "type": "UserPrompt",
         "name": {
-          "fr": "Date fin"
+          "fr": "Sexe des personnes impliquées"
+        }
+      }
+    },
+    {
+      "variable": "OccupationType",
+      "node": {
+        "type": "UserPrompt",
+        "name": {
+          "fr": "Profession des personnes impliquées"
         }
       }
     }
-
-
-
-
-
   ]
 }
