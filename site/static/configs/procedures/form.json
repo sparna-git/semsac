@@ -76,6 +76,9 @@
         "type": "UserPrompt",
         "name": {
           "fr": "Lieu des faits (carte)"
+        },
+        "help": {
+          "fr": "Sélectionner un rectangle sur la carte et valider la saisie avec le bouton 'check'"
         }
       }
     },
