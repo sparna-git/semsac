@@ -290,11 +290,37 @@
             "sType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Fait",
             "oType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#EventType",
             "criterias": []
+          }
+        }
+      ]
+    },
+
+
+    {
+      "line": {
+        "s": "Procedure",
+        "p": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Procedure_resultsOrResultedFrom",
+        "o": "Fait_2",
+        "sType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Procedure",
+        "oType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Fait",
+        "criterias": []
+      },
+      "optional": true,
+      "children": [
+
+        {
+          "line": {
+            "s": "Fait_2",
+            "p": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Fait_hasEventType",
+            "o": "QualificationDesFaits_2",
+            "sType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Fait",
+            "oType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#EventType",
+            "criterias": []
           },
           "children": [
             {
               "line": {
-                "s": "QualificationDesFaitsIRI",
+                "s": "QualificationDesFaits_2",
                 "p": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#EventType_prefLabel",
                 "o": "QualificationDesFaitsLabel",
                 "sType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#EventType",
@@ -306,6 +332,7 @@
         }
       ]
     },
+
 
     {
       "line": {
