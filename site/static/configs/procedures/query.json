@@ -56,7 +56,7 @@
         "p": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Procedure_search",
         "o": "Procedure_Search",
         "sType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Procedure",
-        "oType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Text",
+        "oType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Search",
         "criterias": []
       }
     },

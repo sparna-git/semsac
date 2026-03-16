@@ -147,5 +147,15 @@
         }
       }
     }
-  ]
+  ],
+  "variables": {
+    "onscreen": [
+      "Lien",
+      "Procedure_Libelle",
+      "QualificationDesFaits",
+      "Lieu",
+      "DateDebut",
+      "DateFin"
+    ]
+  }
 }
