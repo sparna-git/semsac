@@ -171,6 +171,20 @@ sacs:Procedure_search sh:path [ sh:alternativePath (
 .
 
 
+# Recherche Fait --> Lieu avec héritage sur les "sous-lieux"
+sacs:Fait
+  sh:property sacs:Fait_hasOrHadLocation_isDirectlyContainedBy_star .
+
+sacs:Fait_hasOrHadLocation_isDirectlyContainedBy_star sh:path (
+  rico:hasOrHadLocation
+  [ sh:zeroOrMorePath rico:isDirectlyContainedBy ]
+) ;
+  sh:name "ont eu pour localisation"@fr;
+  sh:description "Les faits se sont déroulés dans un contexte géographique"@fr;
+  sh:nodeKind sh:IRI;
+  sh:class rico:Place;
+  dash:searchWidget core:AutocompleteProperty .
+
 
 
 

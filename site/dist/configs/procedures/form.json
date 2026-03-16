@@ -96,6 +96,9 @@
         "type": "UserPrompt",
         "name": {
           "fr": "Lieu des faits (recherche)"
+        },
+        "help": {
+          "fr": "Les procédures dans des lieux plus précis seront également ramenées (une recherche sur 'Haute-Garonne' ramènera les Procédures dont les faits se sont déroulés à Toulouse.)"
         }
       }
     },

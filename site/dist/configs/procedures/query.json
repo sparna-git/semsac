@@ -223,7 +223,7 @@
         {
           "line": {
             "s": "Fait",
-            "p": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Fait_hasOrHadLocation",
+            "p": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Fait_hasOrHadLocation_isDirectlyContainedBy_star",
             "o": "LieuIRI",
             "sType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Fait",
             "oType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Lieu",
