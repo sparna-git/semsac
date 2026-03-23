@@ -22,7 +22,7 @@
       }
     },  
     {
-      "variable": "Libelle_3",
+      "variable": "Cote",
       "node": {
         "type": "UserPrompt",
         "name": {
