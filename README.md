@@ -1,8 +1,8 @@
-# AD31
+# SemSac
 
 ## Site web
 
-L'URL publique du site est (pour l'instant) [https://sparna-git.github.io/ad31/](https://sparna-git.github.io/ad31/hello-sparnatural/)
+L'URL publique du site est [https://sparna-git.github.io/semsac]([https://sparna-git.github.io/ad31/hello-sparnatural/](https://sparna-git.github.io/semsac))
 
 ## Dossiers
 
