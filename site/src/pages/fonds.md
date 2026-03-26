@@ -9,20 +9,20 @@ Les « sacs à procès » du parlement de Toulouse correspondent aux dossiers de
 
 Pour l’instant 15 000 sacs environ ont fait l’objet d’un dépouillement et d’une description. Le travail d'analyse des sacs se poursuit et la base de données sera mise à jour au fil de son avancement.
 
-Ressort géographique
+##### Ressort géographique
 
-[![](/assets/posts-images/SAPA_modele-RDF.png)](/site/src/pages/senechaussees.jpg)
+[![](../../assets/images/senechaussees.jpg)](../../assets/images/senechaussees.jpg)
 
-La carte ci-dessus est tirée de l'Atlas historique de la province de Languedoc réalisé sous la direction d'Élie Pélaquier disponible sur le site des [archives départementales de l'Hérault](http://pierresvives.herault.fr/ressource/atlas-historique-de-la-province-de-languedoc-0 "archives départementales de l'Hérault (Nouvelle fenêtre)")
+La carte ci-dessus est tirée de l'Atlas historique de la province de Languedoc réalisé sous la direction d'Élie Pélaquier disponible sur le site des [archives départementales de l'Hérault](http://pierresvives.herault.fr/ressource/atlas-historique-de-la-province-de-languedoc-0)
 
-Intérêt des sacs à procès
+##### Intérêt des sacs à procès
 
 Les sacs à procès offrent au chercheur, tant universitaire qu'amateur, une mine d'informations de toutes sortes.  
-Bien sûr ils documentent avant tout sur un crime ou un contentieux : un vol, une dispute, un rapt, un charivari … Mais au-delà de l'aspect judiciaire des documents, tout un monde prend vie : les flots d'insultes lancées, les perruques arrachées lors d'une bagarre, les récits d'évasions ou de séduction, les accrocs de voisinages, les fatales disputes d'un couple, les objets que l'on vole, avec lesquels on frappe, on tue, etc.Si on voit apparaître tout un monde interlope de faux-sauniers, de prostituées, de voleurs, il se dessine également ici, par les témoignages déposés, un univers très quotidien mettant en scène des moments tant de la vie collective que de la vie intime et quotidienne.
+Bien sûr ils documentent avant tout sur un crime ou un contentieux : un vol, une dispute, un rapt, un charivari... Mais au-delà de l'aspect judiciaire des documents, tout un monde prend vie : les flots d'insultes lancées, les perruques arrachées lors d'une bagarre, les récits d'évasions ou de séduction, les accrocs de voisinages, les fatales disputes d'un couple, les objets que l'on vole, avec lesquels on frappe, on tue, etc.Si on voit apparaître tout un monde interlope de faux-sauniers, de prostituées, de voleurs, il se dessine également ici, par les témoignages déposés, un univers très quotidien mettant en scène des moments tant de la vie collective que de la vie intime et quotidienne.
 
 Ces riches archives peuvent être mises à profit dans un large champ d'étude, allant de l'histoire du droit à l'histoire des mentalités, l'histoire sociale, celle des objets ou de la sexualité, un champ qui ne sera limité que par l'imagination de l'historien. L'histoire locale et la généalogie y trouveront également leur compte.
 
-Compétences judiciaires
+##### Compétences judiciaires
 
 Installé sur un très vaste ressort en 1444 et fonctionnant jusqu'à l'automne 1790, le parlement de Toulouse y exerce un pouvoir souverain en matière judiciaire.
 
@@ -30,7 +30,7 @@ C'est vers lui que remontent les appels des décisions des juridictions civiles 
 
 Lui font concurrence certaines instances juridictionnelles comme les cours des comptes, aides et finances de Montauban et Montpellier, les intendants ainsi que les cours des monnaies de Montpellier et Toulouse ou les cours présidiales dans leurs jugements souverains.
 
-Types de sacs
+##### Types de sacs
 
 D'une manière générale nous pouvons distinguer deux types de sacs : ceux contenant les procédures en provenance des sénéchaussées, des juridictions royales de premier niveau, et des justices seigneuriales et municipales, suite à des appels ; et ceux contenant les procédures produites par le parlement directement.
 
