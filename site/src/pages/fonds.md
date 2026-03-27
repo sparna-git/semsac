@@ -13,7 +13,7 @@ Pour l’instant 15 000 sacs environ ont fait l’objet d’un dépouillement et
 
 [![](../../assets/images/senechaussees.jpg)](../../assets/images/senechaussees.jpg)
 
-La carte ci-dessus est tirée de l'Atlas historique de la province de Languedoc réalisé sous la direction d'Élie Pélaquier disponible sur le site des [archives départementales de l'Hérault](http://pierresvives.herault.fr/ressource/atlas-historique-de-la-province-de-languedoc-0)
+La carte ci-dessus est tirée de l'Atlas historique de la province de Languedoc réalisé sous la direction d'Élie Pélaquier disponible sur le site des [archives départementales de l'Hérault](https://archives-pierresvives.herault.fr/n/atlas-historique-de-la-province-de-languedoc/n:161)
 
 ##### Intérêt des sacs à procès
 
