@@ -935,6 +935,28 @@
           "line": {
             "s": "Sac",
             "p": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Sac_hasOrHadIdentifier",
+            "o": "IdentifiantToutesCotes",
+            "sType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Sac",
+            "oType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Identifiant",
+            "criterias": []
+          },
+          "children": [
+            {
+              "line": {
+                "s": "IdentifiantToutesCotes",
+                "p": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Identifiant_name",
+                "o": "ToutesCotes",
+                "sType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Identifiant",
+                "oType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Libelle",
+                "criterias": []
+              }
+            }
+          ]
+        },
+        {
+          "line": {
+            "s": "Sac",
+            "p": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Sac_hasOrHadIdentifier",
             "o": "Identifiant_2",
             "sType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Sac",
             "oType": "https://data.archives.haute-garonne.fr/modeles/sacsaproces#Identifiant",

@@ -22,14 +22,14 @@
       }
     },  
     {
-      "variable": "Cote",
+      "variable": "ToutesCotes",
       "node": {
         "type": "UserPrompt",
         "name": {
           "fr": "Cote"
         },
         "help": {
-          "fr": "Expression régulière : ^Début, Fin$, . = joker 1 caractère, .* = joker plusieurs caractères"
+          "fr": "Recherche dans les cotes actuelles ou anciennes. Il est possible d'utiliser la syntaxe des expressions régulières : ^ = début de chaine, $ = fin de chaine, . = joker 1 caractère, .* = joker plusieurs caractères. Par exemple ^8 cherchera toutes les cotes qui commencent par 8."
         }
       }
     },
