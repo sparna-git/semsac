@@ -8,7 +8,7 @@
           "fr": "Recherche (procédure ou description de sa notice)"
         },
         "help": {
-          "fr": "Expression régulière : ^Début, Fin$, . = joker 1 caractère, .* = joker plusieurs caractères"
+          "fr": "Recherche simple à l'intérieur du titre de la procédure ou de la description de la notice. Il est possible d'utiliser la syntaxe des expressions régulières : ^ = début de chaine, $ = fin de chaine, . = joker 1 caractère, .* = joker plusieurs caractères"
         }
       }
     },

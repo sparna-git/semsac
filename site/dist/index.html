@@ -24,9 +24,15 @@
   <style>
     #footer_content {
       display: block;
-      width: 85% !important;
-      margin: 0 auto !important;
+      width: 100%;
+      margin: 0 auto;
+      color: #ccc;
     }
+    .footer-contact a { color: #fff; text-decoration: underline; }
+    .footer-contact p { margin-bottom: 0.25rem; }
+    /* Navbar site title */
+    .site-title { font-family: 'Montserrat', sans-serif; font-weight:700; font-size:1.25rem; color:#111; line-height:1; }
+    .site-baseline { font-family: 'Open Sans', sans-serif; font-size:0.75rem; color:#666; margin-top:0.1rem; display:block; }
     </style>
 </head>
 
@@ -35,6 +41,10 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: white; border-bottom: 1px solid #ccc;">
     <div class="container">
+      <a class="navbar-brand d-flex flex-column me-3" href="">
+        <span class="site-title">Semsac</span>
+        <small class="site-baseline">Explorez le fonds des sacs à procès !</small>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -107,7 +117,9 @@
 </style>
 
 <section class="container mt-4">
-  Explorez le fonds des sacs à procès !
+  Le projet <strong>SemSac</strong> propose une nouvelle manière d’explorer les <strong>sacs à procès du Parlement de Toulouse</strong>.<br />
+  En exploitant les relations entre faits, lieux, acteurs et procédures, cette interface met au premier plan les dimensions historiques, sociales et juridiques qui font tout l’intérêt de ce fonds. <br />
+  Le projet <strong>SemSac</strong> repose sur un travail de sémantisation des données et sur l’expérimentation de la norme archivistique <strong>Records in Contexts (RiC)</strong>. 
 </section>
 
 <!-- ================= SPARNATURAL ================= -->
@@ -314,8 +326,21 @@
 
   <!-- Footer -->
   <footer class="text-left py-4 mt-auto" style="background-color: #1d1d1b;">
-    <div id="footer_content">
-      <img src="assets/images/CD-cartouche-AGIR-AVEC%20rvb.png" alt="Conseil Départemental de la Haute-Garonne" height="60">
+    <div id="footer_content" class="container py-4">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-3 text-center text-md-start mb-3 mb-md-0">
+          <img src="assets/images/CD-cartouche-AGIR-AVEC%20rvb.png" alt="Conseil Départemental de la Haute-Garonne" style="height:80px;">
+        </div>
+
+        <div class="col-12 col-md-4 text-white footer-contact">
+          <h4 style="color:#fff; font-weight:400; margin-bottom:0.5rem;">Archives Départementales de la Haute-Garonne</h4>
+          <p>11 boulevard Griffoul-Dorval<br>31400 Toulouse - France</p>
+          <p>Tél : <a href="tel:+33534325000">+33 (0)5 34 32 50 00</a></p>
+          <p>Adresse mail : <a href="mailto:archives@cd31.fr">archives@cd31.fr</a></p>
+        </div>
+
+        <div class="d-none d-md-block col-md-5"><!-- colonne vide pour espacement à droite --></div>
+      </div>
     </div>
   </footer>
 
