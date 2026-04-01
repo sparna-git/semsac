@@ -86,7 +86,7 @@
   <h1>Le modèle de données</h1>
   <p><em>Un encodage formel et détaillé du modèle de données, exprimé à l'aide du standard SHACL, est disponible <a href="../../shacl/AD31%20SHACL.html">ici</a>. Cet encodage détaillé sert de base à la configuration de l'explorateur et du formulaire sur ce site.</em></p>
 <p><em>Cette page documente les principales entités qui entrent en jeu dans la sémantisation en RiC-O du fonds des sacs à procès.</em></p>
-<h5>Procédure</h5>
+<h2>Procédure</h2>
 <p>Procédure judiciaire à l’origine des documents. Il s’agit du cœur de la description.</p>
 <p>La procédure, qui a eu lieu à une <strong>date</strong> donnée, implique plusieurs <strong>parties</strong>. Il peut s’agir de <strong>personnes morales</strong>, comme de <strong>personnes physiques</strong>. Le rôle de la partie dans la procédure (demandeur ou défenseur) n’est pas relevé. Lorsque cela est possible, la <strong>profession</strong> et le <strong>sexe</strong> supposé des personnes physiques sont relevés. Les personnes morales se caractérisent par un <strong>type de collectivité</strong> et le <strong>lieu</strong> de leur siège.</p>
 <p>Chaque procédure repose sur des <strong>faits</strong> qui sont qualifiés en fonction d’une liste d’autorité et du <strong>lieu</strong> où ils sont advenus.</p>
@@ -94,28 +94,28 @@
 <p>Une procédure peut être liée à une autre.</p>
 <p>La modélisation détaillée correspondante des procedures en RiC-O est la suivante :</p>
 <p><a href="../../assets/images/modele-procedures.png"><img src="../../assets/images/modele-procedures.png" alt=""></a></p>
-<h5>Fait</h5>
+<h2>Fait</h2>
 <p>Objet de la procédure. Les faits se sont déroulés dans un <strong>lieu</strong>.</p>
-<h5>Lieu</h5>
+<h2>Lieu</h2>
 <p>Entité géographique permettant de contextualiser des faits, une juridiction, ou une partie.</p>
 <p>La modélisation détaillée correspondante des faits et de leur lieu en RiC-O est la suivante :</p>
 <p><a href="../../assets/images/modele-faits-lieux.png"><img src="../../assets/images/modele-faits-lieux.png" alt=""></a></p>
-<h4>Agents</h4>
-<h5>Juridiction</h5>
+<h2>Agents</h2>
+<h3>Juridiction</h3>
 <p>Institution judiciaire ayant instruit la procédure. Chaque juridiction se caractérise par un <strong>type de juridiction</strong> et un <strong>lieu</strong> (généralement le siège, parfois le ressors).</p>
-<h5>Partie</h5>
+<h3>Partie</h3>
 <p>Personne physique ou morale impliquée dans la procédure (défenseur ou demandeur). Les personnes morales peuvent être localisées dans un <strong>lieu</strong>. Les personnes physiques peuvent être liées à leur profession</p>
 <p>La modélisation détaillée correspondante des Agents en RiC-O est la suivante :</p>
 <p><a href="../../assets/images/modele-agents.png"><img src="../../assets/images/modele-agents.png" alt=""></a></p>
-<h5>Notice</h5>
+<h2>Notice</h2>
 <p>Contenu intellectuel des documents présents dans le sac.</p>
-<h5>Sac</h5>
+<h2>Sac</h2>
 <p>Aspect matériel de l’ensemble documentaire.</p>
 <p>Les <strong>sacs</strong> à procès contiennent un ensemble de <strong>documents</strong> réunis dans le cadre d’une <strong>procédure</strong> judiciaire. Il s’agit en réalité d’une chaîne de procédures (depuis la première <strong>instruction</strong> jusqu’à l’arrêt du Parlement), mais décrite comme un ensemble.</p>
 <p>Dans le courant du XIXe siècle, certains sacs ont étés regroupés dans des <strong>liasses</strong> dans le cadre d’une action archivistique de nature pour l’instant inconnue.</p>
 <p>La modélisation détaillée correspondante des sacs et des notices est la suivante :</p>
 <p><a href="../../assets/images/modele-sacs-notices.png"><img src="../../assets/images/modele-sacs-notices.png" alt=""></a></p>
-<h5>Traitement archivistique</h5>
+<h2>Traitement archivistique</h2>
 <p>Toutes ces informations sont issues du <strong>dépouillement</strong> des sacs à procès depuis plusieurs décennies. Elles ont pu être relevées par des <strong>étudiants</strong>, des <strong>bénévoles</strong>, des <strong>archivistes</strong> ou des <strong>chercheurs</strong>. Si la <strong>saisie</strong> informatique est aujourd’hui concomitante au dépouillement, elle a longtemps été réalisée a posteriori, souvent plusieurs années plus tard.</p>
 <p>Une partie des informations relevées par des étudiants ou des bénévoles a été <strong>relue</strong>, voire <strong>validée</strong> par des archivistes.</p>
 <p>La modélisation détaillée correspondante est la suivante (on notera l'utilisation de quelques propriétés spécifiques en plus de RiC-O) :</p>
