@@ -5,3 +5,13 @@
 :root {
   --bs-body-bg: var(--bs-gray-100);
 }
+
+.advisement {
+  border-color: orange;
+  border-style: none solid;
+  background: #fff7e6;
+  color: #646464;
+  padding: .5em;
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
